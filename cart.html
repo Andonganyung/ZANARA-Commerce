@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Shopping Cart | ZANARA Commerce</title>
+    <meta name="description" content="Review your shopping cart at ZANARA Commerce.">
+    <meta name="theme-color" content="#1a2744">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>if(sessionStorage.getItem('zanaraAuth')!=='true'){window.location.href='login.html';}</script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-truck"></i> Free Worldwide Shipping on Orders $100+</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fas fa-globe"></i> USD $</a>
+                <a href="account.html"><i class="fas fa-user"></i> Account</a>
+                <a href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">ZANARA</span>
+                <span class="logo-sub">COMMERCE</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="has-dropdown">
+                    <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <div class="mega-col">
+                                <h4>Fashion</h4>
+                                <ul>
+                                    <li><a href="category.html">Women's Clothing</a></li>
+                                    <li><a href="category.html">Men's Clothing</a></li>
+                                    <li><a href="category.html">Shoes & Footwear</a></li>
+                                    <li><a href="category.html">Bags & Accessories</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Electronics</h4>
+                                <ul>
+                                    <li><a href="category.html">Smartphones</a></li>
+                                    <li><a href="category.html">Laptops & Computers</a></li>
+                                    <li><a href="category.html">Smartwatches</a></li>
+                                    <li><a href="category.html">Audio & Headphones</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Home & Living</h4>
+                                <ul>
+                                    <li><a href="category.html">Furniture</a></li>
+                                    <li><a href="category.html">Decor & Lighting</a></li>
+                                    <li><a href="category.html">Kitchen & Dining</a></li>
+                                    <li><a href="category.html">Bedding & Bath</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Beauty & Wellness</h4>
+                                <ul>
+                                    <li><a href="category.html">Fragrances</a></li>
+                                    <li><a href="category.html">Skincare</a></li>
+                                    <li><a href="category.html">Makeup</a></li>
+                                    <li><a href="category.html">Health & Fitness</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="new-arrivals.html">New Arrivals</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="nav-icon search-toggle" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="wishlist.html" class="nav-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="cart.html" class="nav-icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            <h3>What are you looking for?</h3>
+            <form class="search-form">
+                <input type="text" placeholder="Search products, brands, categories...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Shopping Cart</h1>
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Cart</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-content" id="cartContent">
+                <!-- Empty Cart State -->
+                <div class="empty-cart" id="emptyCart">
+                    <div class="empty-cart-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h2>Your cart is empty</h2>
+                    <p>Looks like you haven't added anything to your cart yet. Explore our collections and find something you love!</p>
+                    <a href="shop.html" class="btn btn-primary">Continue Shopping</a>
+                </div>
+
+                <!-- Cart with Items (hidden by default, shown via JS) -->
+                <div class="cart-with-items" id="cartWithItems" style="display: none;">
+                    <div class="cart-layout">
+                        <div class="cart-items">
+                            <table class="cart-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cartItems">
+                                    <!-- Cart items will be inserted here via JavaScript -->
+                                </tbody>
+                            </table>
+                            <div class="cart-actions-row">
+                                <div class="coupon-form">
+                                    <input type="text" placeholder="Coupon code">
+                                    <button class="btn btn-dark">Apply Coupon</button>
+                                </div>
+                                <button class="btn btn-outline" id="clearCart">Clear Cart</button>
+                            </div>
+                        </div>
+                        <div class="cart-summary">
+                            <h3>Order Summary</h3>
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="subtotal">$0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span id="shipping">Free</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Tax (estimated)</span>
+                                <span id="tax">$0.00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="total">$0.00</span>
+                            </div>
+                            <a href="checkout.html" class="btn btn-primary btn-block">Proceed to Checkout</a>
+                            <a href="shop.html" class="btn btn-outline btn-block">Continue Shopping</a>
+                            <div class="secure-checkout">
+                                <i class="fas fa-lock"></i>
+                                <span>Secure Checkout - SSL Encrypted</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products-section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <span class="section-tag">You Might Like</span>
+                    <h2>Featured Products</h2>
+                </div>
+                <a href="shop.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-badge hot">Hot</span>
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Smartwatch">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                            <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Electronics</span>
+                        <h3 class="product-title"><a href="product.html">Smartwatch Elite Series</a></h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>(256)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$699.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-badge sale">-15%</span>
+                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&q=80" alt="Laptop">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                            <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Laptops</span>
+                        <h3 class="product-title"><a href="product.html">Professional Laptop 15"</a></h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>(178)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="old-price">$2,499.00</span>
+                            <span class="current-price">$2,124.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80" alt="Fragrance">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                            <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Fragrances</span>
+                        <h3 class="product-title"><a href="product.html">Midnight Essence Perfume</a></h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>(312)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$185.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-text">ZANARA</span>
+                        <span class="logo-sub">COMMERCE</span>
+                    </a>
+                    <p>Your premier destination for curated fashion, electronics, and lifestyle products.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="shipping.html">Shipping Information</a></li>
+                        <li><a href="returns.html">Returns & Exchanges</a></li>
+                        <li><a href="track-order.html">Track Your Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get in Touch</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@zanaracommerce.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (800) 123-4567</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <span>We Accept:</span>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-amex"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ZANARA Commerce. All Rights Reserved. | Designed by <strong>Fedelis Andonganyung</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Smartwatch Elite Series | ZANARA Commerce</title>
+    <meta name="description" content="Shop the Smartwatch Elite Series at ZANARA Commerce. Premium quality, free worldwide shipping.">
+    <meta name="theme-color" content="#1a2744">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>if(sessionStorage.getItem('zanaraAuth')!=='true'){window.location.href='login.html';}</script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-truck"></i> Free Worldwide Shipping on Orders $100+</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fas fa-globe"></i> USD $</a>
+                <a href="account.html"><i class="fas fa-user"></i> Account</a>
+                <a href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">ZANARA</span>
+                <span class="logo-sub">COMMERCE</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="has-dropdown">
+                    <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <div class="mega-col">
+                                <h4>Fashion</h4>
+                                <ul>
+                                    <li><a href="category.html">Women's Clothing</a></li>
+                                    <li><a href="category.html">Men's Clothing</a></li>
+                                    <li><a href="category.html">Shoes & Footwear</a></li>
+                                    <li><a href="category.html">Bags & Accessories</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Electronics</h4>
+                                <ul>
+                                    <li><a href="category.html">Smartphones</a></li>
+                                    <li><a href="category.html">Laptops & Computers</a></li>
+                                    <li><a href="category.html">Smartwatches</a></li>
+                                    <li><a href="category.html">Audio & Headphones</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Home & Living</h4>
+                                <ul>
+                                    <li><a href="category.html">Furniture</a></li>
+                                    <li><a href="category.html">Decor & Lighting</a></li>
+                                    <li><a href="category.html">Kitchen & Dining</a></li>
+                                    <li><a href="category.html">Bedding & Bath</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Beauty & Wellness</h4>
+                                <ul>
+                                    <li><a href="category.html">Fragrances</a></li>
+                                    <li><a href="category.html">Skincare</a></li>
+                                    <li><a href="category.html">Makeup</a></li>
+                                    <li><a href="category.html">Health & Fitness</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="new-arrivals.html">New Arrivals</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="nav-icon search-toggle" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="wishlist.html" class="nav-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="cart.html" class="nav-icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <button class="search-close" id="searchClose"><i class="fas fa-times"></i></button>
+            <h3>What are you looking for?</h3>
+            <form class="search-form">
+                <input type="text" placeholder="Search products, brands, categories...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            <div class="search-suggestions">
+                <span>Popular:</span>
+                <a href="#">Dresses</a>
+                <a href="#">Watches</a>
+                <a href="#">Laptops</a>
+                <a href="#">Sneakers</a>
+                <a href="#">Fragrances</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="shop.html">Shop</a>
+                <span>/</span>
+                <a href="category.html">Electronics</a>
+                <span>/</span>
+                <span>Smartwatch Elite Series</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Product Detail -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-detail-grid">
+                <!-- Product Gallery -->
+                <div class="product-gallery">
+                    <div class="gallery-main">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80" alt="Smartwatch Elite Series" id="mainImage">
+                    </div>
+                    <div class="gallery-thumbs">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80" alt="View 1" class="thumb active" onclick="changeImage(this)">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=200&q=80" alt="View 2" class="thumb" onclick="changeImage(this)">
+                        <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=200&q=80" alt="View 3" class="thumb" onclick="changeImage(this)">
+                        <img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=200&q=80" alt="View 4" class="thumb" onclick="changeImage(this)">
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-detail-info">
+                    <span class="product-badge new">New Arrival</span>
+                    <h1>Smartwatch Elite Series</h1>
+                    
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="rating-text">5.0 (256 Reviews)</span>
+                    </div>
+
+                    <div class="product-price-large">
+                        <span class="current-price">$699.00</span>
+                        <span class="tax-note">Tax included. Free shipping.</span>
+                    </div>
+
+                    <div class="product-description">
+                        <p>Experience the pinnacle of wearable technology with our Smartwatch Elite Series. Crafted with premium materials and packed with cutting-edge features, this timepiece seamlessly blends style with functionality. Perfect for fitness enthusiasts and tech-savvy professionals alike.</p>
+                    </div>
+
+                    <div class="product-variants">
+                        <div class="variant-group">
+                            <label>Color</label>
+                            <div class="color-options">
+                                <button class="color-btn active" style="background: #1a1a1a;" title="Midnight Black"></button>
+                                <button class="color-btn" style="background: #c9a962;" title="Gold"></button>
+                                <button class="color-btn" style="background: #e5e5e5;" title="Silver"></button>
+                            </div>
+                        </div>
+                        <div class="variant-group">
+                            <label>Size</label>
+                            <div class="size-options">
+                                <button class="size-btn">40mm</button>
+                                <button class="size-btn active">44mm</button>
+                                <button class="size-btn">48mm</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-quantity">
+                        <label>Quantity</label>
+                        <div class="quantity-selector">
+                            <button class="qty-btn minus">-</button>
+                            <input type="number" value="1" min="1" max="10" class="qty-input">
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+
+                    <div class="product-actions-large">
+                        <button class="btn btn-primary btn-large add-to-cart-btn">
+                            <i class="fas fa-shopping-bag"></i> Add to Cart
+                        </button>
+                        <button class="btn btn-outline btn-large wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-guarantees">
+                        <div class="guarantee-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Secure Payment</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Free Shipping</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fas fa-undo"></i>
+                            <span>30-Day Returns</span>
+                        </div>
+                    </div>
+
+                    <div class="product-meta">
+                        <p><strong>SKU:</strong> ZC-SW-001</p>
+                        <p><strong>Category:</strong> <a href="category.html">Electronics</a>, <a href="category.html">Smartwatches</a></p>
+                        <p><strong>Tags:</strong> <a href="#">Smart</a>, <a href="#">Fitness</a>, <a href="#">Premium</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="product-tabs">
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-tab="description">Description</button>
+                    <button class="tab-btn" data-tab="specifications">Specifications</button>
+                    <button class="tab-btn" data-tab="reviews">Reviews (256)</button>
+                </div>
+                <div class="tabs-content">
+                    <div class="tab-pane active" id="description">
+                        <h3>Product Overview</h3>
+                        <p>The Smartwatch Elite Series represents the culmination of years of innovation in wearable technology. Designed for those who demand excellence, this sophisticated timepiece combines stunning aesthetics with powerful performance.</p>
+                        
+                        <p>The high-resolution AMOLED display delivers crystal-clear visuals, while the advanced health monitoring suite tracks your heart rate, blood oxygen levels, sleep patterns, and more. With built-in GPS and water resistance up to 50 meters, it's ready for any adventure.</p>
+                        
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Premium titanium case with scratch-resistant sapphire crystal</li>
+                            <li>Advanced health and fitness tracking with 100+ workout modes</li>
+                            <li>All-day battery life with fast wireless charging</li>
+                            <li>Seamless smartphone connectivity and smart notifications</li>
+                            <li>Customizable watch faces and interchangeable bands</li>
+                            <li>Voice assistant integration for hands-free control</li>
+                        </ul>
+                        
+                        <p>Whether you're conquering the boardroom or the trail, the Smartwatch Elite Series is your perfect companion for a connected, active lifestyle.</p>
+                    </div>
+                    <div class="tab-pane" id="specifications">
+                        <table class="specs-table">
+                            <tr><td>Display</td><td>1.9" AMOLED, 484 x 396 resolution</td></tr>
+                            <tr><td>Case Material</td><td>Titanium with sapphire crystal</td></tr>
+                            <tr><td>Water Resistance</td><td>50 meters (5 ATM)</td></tr>
+                            <tr><td>Battery Life</td><td>Up to 36 hours typical use</td></tr>
+                            <tr><td>Sensors</td><td>Heart rate, SpO2, accelerometer, gyroscope, GPS</td></tr>
+                            <tr><td>Connectivity</td><td>Bluetooth 5.3, Wi-Fi, NFC</td></tr>
+                            <tr><td>Storage</td><td>32GB internal storage</td></tr>
+                            <tr><td>Compatibility</td><td>iOS 14+ / Android 10+</td></tr>
+                            <tr><td>Weight</td><td>45g (without strap)</td></tr>
+                            <tr><td>Warranty</td><td>2-year international warranty</td></tr>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="reviews">
+                        <div class="reviews-summary">
+                            <div class="rating-overview">
+                                <span class="big-rating">5.0</span>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>Based on 256 reviews</span>
+                            </div>
+                        </div>
+                        <div class="reviews-list">
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <strong>Michael R.</strong>
+                                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    <span class="review-date">January 15, 2025</span>
+                                </div>
+                                <p>Absolutely stunning watch! The build quality is exceptional and the features are top-notch. Battery life easily lasts through my busy days. Highly recommended!</p>
+                            </div>
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <strong>Sarah K.</strong>
+                                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                    <span class="review-date">January 10, 2025</span>
+                                </div>
+                                <p>Best smartwatch I've ever owned. The health tracking is incredibly accurate and the design is elegant enough for any occasion. Worth every penny!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <span class="section-tag">You May Also Like</span>
+                    <h2>Related Products</h2>
+                </div>
+                <a href="shop.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&q=80" alt="Wireless Earbuds">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                            <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Audio</span>
+                        <h3 class="product-title"><a href="product.html">Premium Wireless Earbuds</a></h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>(187)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$249.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-badge sale">-20%</span>
+                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&q=80" alt="Laptop">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                            <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Laptops</span>
+                        <h3 class="product-title"><a href="product.html">Professional Laptop 15"</a></h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>(178)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="old-price">$2,499.00</span>
+                            <span class="current-price">$1,999.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="Smartphone">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                            <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Electronics</span>
+                        <h3 class="product-title"><a href="product.html">Smart Device Pro Max</a></h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>(245)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$849.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <span class="product-badge new">New</span>
+                        <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400&q=80" alt="Classic Watch">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                            <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Accessories</span>
+                        <h3 class="product-title"><a href="product.html">Classic Timepiece Watch</a></h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>(98)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$450.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-text">ZANARA</span>
+                        <span class="logo-sub">COMMERCE</span>
+                    </a>
+                    <p>Your premier destination for curated fashion, electronics, and lifestyle products.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="shipping.html">Shipping Information</a></li>
+                        <li><a href="returns.html">Returns & Exchanges</a></li>
+                        <li><a href="track-order.html">Track Your Order</a></li>
+                        <li><a href="gift-cards.html">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get in Touch</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@zanaracommerce.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (800) 123-4567</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <span>We Accept:</span>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-amex"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ZANARA Commerce. All Rights Reserved. | Designed by <strong>Fedelis Andonganyung</strong></p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <script src="js/main.js"></script>
+    <script>
+        function changeImage(thumb) {
+            document.getElementById('mainImage').src = thumb.src.replace('w=200', 'w=800');
+            document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                document.getElementById(this.dataset.tab).classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.color-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        const qtyInput = document.querySelector('.qty-input');
+        document.querySelector('.qty-btn.minus').addEventListener('click', () => {
+            if (qtyInput.value > 1) qtyInput.value = parseInt(qtyInput.value) - 1;
+        });
+        document.querySelector('.qty-btn.plus').addEventListener('click', () => {
+            if (qtyInput.value < 10) qtyInput.value = parseInt(qtyInput.value) + 1;
+        });
+    </script>
+</body>
+</html>

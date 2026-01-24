@@ -1,8 +1,12 @@
 // ZANARA Commerce - Main JavaScript
-// Modern Luxury E-Commerce Theme
+// Modern Luxury E-Commerce with Rose Gold & Navy Theme
+// Fully Optimized for All Devices
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Navigation
+    
+    // =============================================
+    // MOBILE NAVIGATION
+    // =============================================
     const mobileToggle = document.getElementById('mobileToggle');
     const navMenu = document.getElementById('navMenu');
     
@@ -10,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
             mobileToggle.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
 
         // Close menu when clicking outside
@@ -17,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
                 navMenu.classList.remove('active');
                 mobileToggle.classList.remove('active');
+                document.body.style.overflow = '';
             }
         });
 
@@ -31,21 +37,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
+
+        // Close menu on link click
+        navMenu.querySelectorAll('a:not(.has-dropdown > a)').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
     }
 
-    // Navbar scroll effect
+    // =============================================
+    // NAVBAR SCROLL EFFECT
+    // =============================================
     const navbar = document.getElementById('navbar');
     if (navbar) {
+        let lastScroll = 0;
+        
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 100) {
+            const currentScroll = window.scrollY;
+            
+            if (currentScroll > 100) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            
+            lastScroll = currentScroll;
         });
     }
 
-    // Search Overlay
+    // =============================================
+    // SEARCH OVERLAY
+    // =============================================
     const searchToggle = document.getElementById('searchToggle');
     const searchOverlay = document.getElementById('searchOverlay');
     const searchClose = document.getElementById('searchClose');
@@ -55,14 +80,17 @@ document.addEventListener('DOMContentLoaded', function() {
             searchOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
             setTimeout(() => {
-                searchOverlay.querySelector('input').focus();
+                const searchInput = searchOverlay.querySelector('input');
+                if (searchInput) searchInput.focus();
             }, 300);
         });
 
-        searchClose.addEventListener('click', function() {
-            searchOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
+        if (searchClose) {
+            searchClose.addEventListener('click', function() {
+                searchOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
 
         searchOverlay.addEventListener('click', function(e) {
             if (e.target === searchOverlay) {
@@ -79,11 +107,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Back to Top Button
+    // =============================================
+    // BACK TO TOP BUTTON
+    // =============================================
     const backToTop = document.getElementById('backToTop');
     if (backToTop) {
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 500) {
+            if (window.scrollY > 600) {
                 backToTop.classList.add('visible');
             } else {
                 backToTop.classList.remove('visible');
@@ -99,26 +129,46 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Cart Functionality
+    // =============================================
+    // CART FUNCTIONALITY
+    // =============================================
     let cart = JSON.parse(localStorage.getItem('zanaraCart')) || [];
     updateCartCount();
 
     // Add to Cart buttons
-    const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
-    addToCartBtns.forEach(btn => {
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
+            
             const card = this.closest('.product-card');
+            if (!card) return;
+            
+            const titleEl = card.querySelector('.product-title a');
+            const priceEl = card.querySelector('.current-price');
+            const imageEl = card.querySelector('.product-image img');
+            
+            if (!titleEl || !priceEl || !imageEl) return;
+            
             const product = {
                 id: Date.now(),
-                title: card.querySelector('.product-title a').textContent,
-                price: card.querySelector('.current-price').textContent,
-                image: card.querySelector('.product-image img').src,
+                title: titleEl.textContent.trim(),
+                price: priceEl.textContent.trim(),
+                image: imageEl.src,
                 quantity: 1
             };
             
             addToCart(product);
-            showNotification('Product added to cart!');
+            
+            // Button animation
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-check"></i> Added!';
+            this.style.background = '#4caf50';
+            
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.style.background = '';
+            }, 1500);
         });
     });
 
@@ -131,6 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         localStorage.setItem('zanaraCart', JSON.stringify(cart));
         updateCartCount();
+        showNotification('Added to cart!');
     }
 
     function updateCartCount() {
@@ -138,67 +189,100 @@ document.addEventListener('DOMContentLoaded', function() {
         if (cartCount) {
             const total = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = total;
+            
+            // Add bounce animation
+            cartCount.style.animation = 'none';
+            cartCount.offsetHeight;
+            cartCount.style.animation = 'bounce 0.5s ease';
         }
     }
 
-    // Wishlist buttons
-    const wishlistBtns = document.querySelectorAll('.wishlist-btn');
-    wishlistBtns.forEach(btn => {
+    // Add bounce animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // =============================================
+    // WISHLIST FUNCTIONALITY
+    // =============================================
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
+            
             const icon = this.querySelector('i');
             if (icon.classList.contains('far')) {
                 icon.classList.remove('far');
                 icon.classList.add('fas');
+                icon.style.color = '#e91e63';
                 showNotification('Added to wishlist!');
             } else {
                 icon.classList.remove('fas');
                 icon.classList.add('far');
+                icon.style.color = '';
                 showNotification('Removed from wishlist');
             }
         });
     });
 
-    // Notification
-    function showNotification(message) {
+    // =============================================
+    // NOTIFICATION SYSTEM
+    // =============================================
+    function showNotification(message, type = 'success') {
         const existing = document.querySelector('.notification');
         if (existing) existing.remove();
 
         const notification = document.createElement('div');
         notification.className = 'notification';
+        
+        const icon = type === 'success' ? 'fa-check-circle' : 'fa-info-circle';
         notification.innerHTML = `
-            <i class="fas fa-check-circle"></i>
+            <i class="fas ${icon}"></i>
             <span>${message}</span>
         `;
+        
         notification.style.cssText = `
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: #1a1a1a;
+            background: linear-gradient(135deg, #1a2744 0%, #2d3f5e 100%);
             color: white;
-            padding: 15px 30px;
+            padding: 18px 35px;
+            border-radius: 50px;
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 40px rgba(26, 39, 68, 0.4);
             z-index: 9999;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            font-size: 15px;
         `;
         
         document.body.appendChild(notification);
         
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             notification.style.transform = 'translateX(-50%) translateY(0)';
-        }, 10);
+        });
         
         setTimeout(() => {
             notification.style.transform = 'translateX(-50%) translateY(100px)';
-            setTimeout(() => notification.remove(), 300);
+            setTimeout(() => notification.remove(), 400);
         }, 3000);
     }
 
-    // Newsletter form
+    // Make showNotification globally available
+    window.showNotification = showNotification;
+
+    // =============================================
+    // NEWSLETTER FORM
+    // =============================================
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(e) {
@@ -211,7 +295,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Intersection Observer for animations
+    // =============================================
+    // SCROLL ANIMATIONS
+    // =============================================
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -221,31 +307,38 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in-visible');
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     // Add animation to elements
-    const animateElements = document.querySelectorAll('.product-card, .category-card, .feature-item, .stat-item');
+    const animateElements = document.querySelectorAll(
+        '.product-card, .category-card, .feature-item, .stat-item, .banner-card'
+    );
+    
     animateElements.forEach((el, index) => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `opacity 0.5s ease ${index * 0.05}s, transform 0.5s ease ${index * 0.05}s`;
+        el.style.transform = 'translateY(40px)';
+        el.style.transition = `opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s, 
+                              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.05}s`;
         observer.observe(el);
     });
 
     // Add animation class
-    const style = document.createElement('style');
-    style.textContent = `
+    const animStyle = document.createElement('style');
+    animStyle.textContent = `
         .fade-in-visible {
             opacity: 1 !important;
             transform: translateY(0) !important;
         }
     `;
-    document.head.appendChild(style);
+    document.head.appendChild(animStyle);
 
-    // Counter animation for stats
-    const statNumbers = document.querySelectorAll('.stat-number');
+    // =============================================
+    // COUNTER ANIMATION FOR STATS
+    // =============================================
+    const statNumbers = document.querySelectorAll('.stat-number, .hero-stat-number');
     const statsObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -256,11 +349,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const hasM = text.includes('M');
                 let number = parseFloat(text.replace(/[^0-9.]/g, ''));
                 
-                if (hasK) number = number;
-                if (hasM) number = number;
-                
                 let current = 0;
-                const increment = number / 40;
+                const duration = 2000;
+                const increment = number / (duration / 16);
                 
                 const timer = setInterval(() => {
                     current += increment;
@@ -269,12 +360,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         clearInterval(timer);
                     }
                     
-                    let display = hasK || hasM ? current.toFixed(0) : Math.floor(current);
+                    let display = Math.floor(current);
                     if (hasK) display += 'K';
                     if (hasM) display += 'M';
                     if (hasPlus) display += '+';
                     target.innerText = display;
-                }, 40);
+                }, 16);
                 
                 statsObserver.unobserve(target);
             }
@@ -283,7 +374,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     statNumbers.forEach(stat => statsObserver.observe(stat));
 
-    // Smooth scroll for anchor links
+    // =============================================
+    // SMOOTH SCROLL FOR ANCHOR LINKS
+    // =============================================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -300,4 +393,75 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // =============================================
+    // TOUCH DEVICE DETECTION
+    // =============================================
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        document.body.classList.add('touch-device');
+    }
+
+    // =============================================
+    // LAZY LOADING IMAGES
+    // =============================================
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                    }
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+
+    // =============================================
+    // PREVENT ZOOM ON DOUBLE TAP (iOS)
+    // =============================================
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function(e) {
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+            e.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
+
+    // =============================================
+    // HANDLE ORIENTATION CHANGE
+    // =============================================
+    window.addEventListener('orientationchange', function() {
+        // Close mobile menu on orientation change
+        if (navMenu) {
+            navMenu.classList.remove('active');
+            if (mobileToggle) mobileToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // =============================================
+    // PRODUCT IMAGE HOVER EFFECT (Desktop)
+    // =============================================
+    if (window.matchMedia('(hover: hover)').matches) {
+        document.querySelectorAll('.product-image').forEach(imageContainer => {
+            imageContainer.addEventListener('mousemove', function(e) {
+                const img = this.querySelector('img');
+                const rect = this.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                
+                img.style.transformOrigin = `${x * 100}% ${y * 100}%`;
+            });
+        });
+    }
+
+    console.log('ZANARA Commerce initialized successfully');
 });
