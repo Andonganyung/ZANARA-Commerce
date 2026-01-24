@@ -1,0 +1,6 @@
+# ZANARA Commerce - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://zanaracommerce.com/sitemap.xml
