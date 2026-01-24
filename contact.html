@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | ZANARA Commerce</title>
+    <meta name="description" content="Get in touch with ZANARA Commerce. We're here to help with your orders, questions, and feedback. Contact our 24/7 support team.">
+    <meta name="theme-color" content="#1a2744">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header { background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%); padding: 80px 0; text-align: center; color: white; }
+        .page-header h1 { font-size: 48px; margin-bottom: 15px; }
+        .page-header p { font-size: 18px; opacity: 0.9; }
+        .contact-section { padding: 80px 0; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+        .contact-info h2 { font-size: 32px; margin-bottom: 20px; color: var(--secondary); }
+        .contact-info > p { color: var(--text-muted); margin-bottom: 40px; line-height: 1.8; }
+        .contact-details { display: flex; flex-direction: column; gap: 25px; }
+        .contact-item { display: flex; gap: 20px; align-items: flex-start; }
+        .contact-icon { width: 60px; height: 60px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-icon i { font-size: 24px; color: var(--primary); }
+        .contact-text .label { display: block; font-size: 14px; color: var(--text-muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .contact-text a, .contact-text address { font-size: 17px; color: var(--secondary); font-style: normal; font-weight: 500; }
+        .contact-text a:hover { color: var(--primary); }
+        .contact-form-wrapper { background: var(--gray-50); padding: 50px; border-radius: var(--radius-lg); }
+        .contact-form h3 { font-size: 28px; margin-bottom: 30px; color: var(--secondary); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 10px; color: var(--secondary); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 16px 20px; border: 2px solid var(--gray-200); border-radius: var(--radius-sm); font-size: 15px; font-family: inherit; transition: var(--transition); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--primary); outline: none; }
+        .form-group textarea { resize: vertical; min-height: 150px; }
+        .support-hours { margin-top: 40px; padding: 30px; background: white; border-radius: var(--radius-md); border-left: 4px solid var(--primary); }
+        .support-hours h4 { font-size: 18px; margin-bottom: 15px; color: var(--secondary); }
+        .support-hours ul { list-style: none; }
+        .support-hours li { padding: 8px 0; color: var(--text-muted); display: flex; justify-content: space-between; }
+        .support-hours li strong { color: var(--secondary); }
+        .global-presence { padding: 80px 0; background: var(--cream); }
+        .global-presence .section-header { text-align: center; margin-bottom: 50px; }
+        .global-presence h2 { font-size: 36px; color: var(--secondary); margin-bottom: 15px; }
+        .global-presence > .container > p { text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto 50px; }
+        .presence-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .presence-card { background: white; padding: 40px 30px; border-radius: var(--radius-md); text-align: center; transition: var(--transition); }
+        .presence-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .presence-card i { font-size: 40px; color: var(--primary); margin-bottom: 20px; }
+        .presence-card h4 { font-size: 18px; color: var(--secondary); margin-bottom: 10px; }
+        .presence-card p { color: var(--text-muted); font-size: 14px; }
+        @media (max-width: 992px) { .contact-grid { grid-template-columns: 1fr; } .presence-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } .contact-form-wrapper { padding: 30px 20px; } .presence-grid { grid-template-columns: 1fr; } .page-header h1 { font-size: 36px; } }
+    </style>
+    <script>
+        if (sessionStorage.getItem('zanaraAuth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-headset"></i> 24/7 Customer Support Available</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fas fa-globe"></i> USD $</a>
+                <a href="account.html"><i class="fas fa-user"></i> Account</a>
+                <a href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">ZANARA</span>
+                <span class="logo-sub">COMMERCE</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="has-dropdown">
+                    <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <div class="mega-col">
+                                <h4>Fashion</h4>
+                                <ul>
+                                    <li><a href="category.html">Women's Clothing</a></li>
+                                    <li><a href="category.html">Men's Clothing</a></li>
+                                    <li><a href="category.html">Shoes & Footwear</a></li>
+                                    <li><a href="category.html">Bags & Accessories</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Electronics</h4>
+                                <ul>
+                                    <li><a href="category.html">Smartphones</a></li>
+                                    <li><a href="category.html">Laptops & Computers</a></li>
+                                    <li><a href="category.html">Smartwatches</a></li>
+                                    <li><a href="category.html">Audio & Headphones</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Home & Living</h4>
+                                <ul>
+                                    <li><a href="category.html">Furniture</a></li>
+                                    <li><a href="category.html">Decor & Lighting</a></li>
+                                    <li><a href="category.html">Kitchen & Dining</a></li>
+                                    <li><a href="category.html">Bedding & Bath</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Beauty & Wellness</h4>
+                                <ul>
+                                    <li><a href="category.html">Fragrances</a></li>
+                                    <li><a href="category.html">Skincare</a></li>
+                                    <li><a href="category.html">Makeup</a></li>
+                                    <li><a href="category.html">Health & Fitness</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="new-arrivals.html">New Arrivals</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="nav-icon search-toggle" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="wishlist.html" class="nav-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="cart.html" class="nav-icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you. Our team is always here to help.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>Have questions about your order, need help finding the perfect product, or want to share feedback? We're here for you. Reach out through any of the channels below, and our dedicated support team will assist you promptly.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="label">Email Us</span>
+                                <a href="mailto:info@zanaracommerce.com">info@zanaracommerce.com</a><br>
+                                <a href="mailto:support@zanaracommerce.com">support@zanaracommerce.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="label">Call Us</span>
+                                <a href="tel:+14436819715">+1 443 681 9715</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="label">Headquarters</span>
+                                <address>Bowie, Maryland<br>United States of America</address>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-globe-americas"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="label">Global Reach</span>
+                                <address>Shipping to 50+ Countries Worldwide</address>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="support-hours">
+                        <h4><i class="fas fa-clock" style="color: var(--primary); margin-right: 10px;"></i>Support Hours</h4>
+                        <ul>
+                            <li><strong>Online Shopping</strong> <span>24/7 Available</span></li>
+                            <li><strong>Customer Support</strong> <span>24/7 Available</span></li>
+                            <li><strong>Phone Support</strong> <span>Mon - Fri: 9AM - 6PM EST</span></li>
+                            <li><strong>Saturday</strong> <span>8AM - 2PM EST</span></li>
+                            <li><strong>Sunday</strong> <span>Online Support Only</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" action="#" method="POST">
+                        <h3>Send Us a Message</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderNumber">Order Number (if applicable)</label>
+                            <input type="text" id="orderNumber" name="orderNumber" placeholder="e.g., ZAN-123456">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a topic...</option>
+                                <option value="order">Order Inquiry</option>
+                                <option value="shipping">Shipping & Delivery</option>
+                                <option value="returns">Returns & Refunds</option>
+                                <option value="product">Product Question</option>
+                                <option value="payment">Payment Issue</option>
+                                <option value="feedback">Feedback & Suggestions</option>
+                                <option value="partnership">Business Partnership</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="How can we help you today?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Presence -->
+    <section class="global-presence">
+        <div class="container">
+            <h2>Serving Customers Worldwide</h2>
+            <p>From our headquarters in Maryland, USA, we deliver premium products to customers across the globe with dedicated support.</p>
+            <div class="presence-grid">
+                <div class="presence-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h4>Fast Shipping</h4>
+                    <p>Express delivery to 50+ countries with real-time tracking</p>
+                </div>
+                <div class="presence-card">
+                    <i class="fas fa-headset"></i>
+                    <h4>24/7 Support</h4>
+                    <p>Round-the-clock customer service in multiple languages</p>
+                </div>
+                <div class="presence-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Secure Payments</h4>
+                    <p>Bank-level encryption for all transactions worldwide</p>
+                </div>
+                <div class="presence-card">
+                    <i class="fas fa-undo"></i>
+                    <h4>Easy Returns</h4>
+                    <p>Hassle-free 30-day return policy for all orders</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-text">ZANARA</span>
+                        <span class="logo-sub">COMMERCE</span>
+                    </a>
+                    <p>Your premier destination for curated fashion, electronics, and lifestyle products. We bring the world's finest brands to your doorstep.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="shipping.html">Shipping Information</a></li>
+                        <li><a href="returns.html">Returns & Exchanges</a></li>
+                        <li><a href="size-guide.html">Size Guide</a></li>
+                        <li><a href="track-order.html">Track Your Order</a></li>
+                        <li><a href="gift-cards.html">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get in Touch</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@zanaracommerce.com</li>
+                        <li><i class="fas fa-envelope"></i> support@zanaracommerce.com</li>
+                        <li><i class="fas fa-phone"></i> +1 443 681 9715</li>
+                        <li><i class="fas fa-clock"></i> 24/7 Online Support</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <span>We Accept:</span>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-amex"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                            <i class="fab fa-apple-pay"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ZANARA Commerce. All Rights Reserved. | Designed by <strong>Fedelis Andonganyung</strong></p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    <script src="js/main.js"></script>
+</body>
+</html>

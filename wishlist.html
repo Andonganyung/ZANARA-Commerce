@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist | ZANARA Commerce</title>
+    <meta name="description" content="View and manage your wishlist at ZANARA Commerce.">
+    <meta name="theme-color" content="#1a2744">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header { background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%); padding: 60px 0; text-align: center; color: white; }
+        .page-header h1 { font-size: 42px; margin-bottom: 10px; }
+        .wishlist-section { padding: 60px 0; min-height: 50vh; }
+        .wishlist-empty { text-align: center; padding: 80px 20px; }
+        .wishlist-empty i { font-size: 80px; color: var(--gray-300); margin-bottom: 30px; }
+        .wishlist-empty h2 { font-size: 28px; color: var(--secondary); margin-bottom: 15px; }
+        .wishlist-empty p { color: var(--text-muted); margin-bottom: 30px; }
+        .wishlist-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .wishlist-item { position: relative; }
+        .remove-wishlist { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; background: white; border: none; border-radius: 50%; cursor: pointer; z-index: 10; box-shadow: var(--shadow-sm); transition: var(--transition); }
+        .remove-wishlist:hover { background: #ff4757; color: white; }
+        @media (max-width: 992px) { .wishlist-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 576px) { .wishlist-grid { grid-template-columns: 1fr; } }
+    </style>
+    <script>
+        if (sessionStorage.getItem('zanaraAuth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-truck"></i> Free Worldwide Shipping on Orders $100+</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fas fa-globe"></i> USD $</a>
+                <a href="account.html"><i class="fas fa-user"></i> Account</a>
+                <a href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">ZANARA</span>
+                <span class="logo-sub">COMMERCE</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="has-dropdown"><a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a></li>
+                <li><a href="new-arrivals.html">New Arrivals</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-icon search-toggle" id="searchToggle"><i class="fas fa-search"></i></button>
+                <a href="wishlist.html" class="nav-icon active"><i class="fas fa-heart"></i><span class="badge">0</span></a>
+                <a href="cart.html" class="nav-icon cart-icon"><i class="fas fa-shopping-bag"></i><span class="badge" id="cartCount">0</span></a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-heart"></i> My Wishlist</h1>
+            <p>Your saved items are waiting for you</p>
+        </div>
+    </section>
+
+    <!-- Wishlist Section -->
+    <section class="wishlist-section">
+        <div class="container">
+            <!-- Empty Wishlist State -->
+            <div class="wishlist-empty" id="emptyWishlist">
+                <i class="far fa-heart"></i>
+                <h2>Your Wishlist is Empty</h2>
+                <p>Looks like you haven't added any items to your wishlist yet.<br>Start exploring and save your favorite products!</p>
+                <a href="shop.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+
+            <!-- Wishlist Items (hidden by default, shown when items exist) -->
+            <div class="wishlist-grid" id="wishlistGrid" style="display: none;">
+                <div class="wishlist-item">
+                    <button class="remove-wishlist"><i class="fas fa-times"></i></button>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Running Shoes">
+                            <button class="add-to-cart-btn">Add to Cart</button>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">Footwear</span>
+                            <h3 class="product-title"><a href="product.html">Premium Running Shoes</a></h3>
+                            <div class="product-price"><span class="current-price">$129.00</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Products -->
+    <section class="products-section bg-light" style="padding: 60px 0;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <span class="section-tag">You May Also Like</span>
+                    <h2>Recommended For You</h2>
+                </div>
+                <a href="shop.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Smartwatch">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                            <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Electronics</span>
+                        <h3 class="product-title"><a href="product.html">Luxury Smartwatch Pro</a></h3>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(256)</span></div>
+                        <div class="product-price"><span class="current-price">$349.00</span></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80" alt="Designer Handbag">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                            <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Accessories</span>
+                        <h3 class="product-title"><a href="product.html">Designer Leather Handbag</a></h3>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span>(89)</span></div>
+                        <div class="product-price"><span class="current-price">$239.00</span></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80" alt="Premium Fragrance">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                            <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Fragrances</span>
+                        <h3 class="product-title"><a href="product.html">Signature Eau de Parfum</a></h3>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(312)</span></div>
+                        <div class="product-price"><span class="current-price">$89.00</span></div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&q=80" alt="Wireless Earbuds">
+                        <div class="product-actions">
+                            <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                            <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-category">Electronics</span>
+                        <h3 class="product-title"><a href="product.html">Premium Wireless Earbuds</a></h3>
+                        <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(187)</span></div>
+                        <div class="product-price"><span class="current-price">$199.00</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo"><span class="logo-text">ZANARA</span><span class="logo-sub">COMMERCE</span></a>
+                    <p>Your premier destination for curated fashion, electronics, and lifestyle products.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="faq.html">FAQs</a></li></ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Customer Service</h4>
+                    <ul><li><a href="shipping.html">Shipping Info</a></li><li><a href="returns.html">Returns</a></li><li><a href="track-order.html">Track Order</a></li></ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get in Touch</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@zanaracommerce.com</li>
+                        <li><i class="fas fa-envelope"></i> support@zanaracommerce.com</li>
+                        <li><i class="fas fa-phone"></i> +1 443 681 9715</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 ZANARA Commerce. All Rights Reserved.</p></div>
+        </div>
+    </footer>
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    <script src="js/main.js"></script>
+</body>
+</html>

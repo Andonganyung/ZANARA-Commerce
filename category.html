@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category | ZANARA Commerce</title>
+    <meta name="description" content="Browse our curated collection of premium products at ZANARA Commerce.">
+    <meta name="theme-color" content="#1a2744">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header { background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%); padding: 60px 0; text-align: center; color: white; }
+        .page-header h1 { font-size: 42px; margin-bottom: 10px; }
+        .breadcrumb-nav { display: flex; justify-content: center; gap: 10px; font-size: 14px; opacity: 0.9; }
+        .breadcrumb-nav a { color: white; }
+        .category-section { padding: 60px 0; }
+        .category-layout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; }
+        .filters-sidebar { background: var(--gray-50); padding: 30px; border-radius: var(--radius-md); height: fit-content; position: sticky; top: 100px; }
+        .filter-group { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid var(--gray-200); }
+        .filter-group:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .filter-group h4 { font-size: 16px; color: var(--secondary); margin-bottom: 15px; }
+        .filter-options label { display: flex; align-items: center; gap: 10px; padding: 8px 0; cursor: pointer; color: var(--text-muted); transition: var(--transition); }
+        .filter-options label:hover { color: var(--primary); }
+        .filter-options input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); }
+        .price-range { display: flex; gap: 10px; align-items: center; }
+        .price-range input { width: 80px; padding: 8px; border: 1px solid var(--gray-200); border-radius: var(--radius-sm); }
+        .products-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .products-header p { color: var(--text-muted); }
+        .sort-select { padding: 10px 15px; border: 1px solid var(--gray-200); border-radius: var(--radius-sm); font-size: 14px; }
+        @media (max-width: 992px) { .category-layout { grid-template-columns: 1fr; } .filters-sidebar { position: static; } }
+    </style>
+    <script>
+        if (sessionStorage.getItem('zanaraAuth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-truck"></i> Free Worldwide Shipping on Orders $100+</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fas fa-globe"></i> USD $</a>
+                <a href="account.html"><i class="fas fa-user"></i> Account</a>
+                <a href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">ZANARA</span>
+                <span class="logo-sub">COMMERCE</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="has-dropdown">
+                    <a href="shop.html" class="active">Shop <i class="fas fa-chevron-down"></i></a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <div class="mega-col">
+                                <h4>Fashion</h4>
+                                <ul>
+                                    <li><a href="category.html">Women's Clothing</a></li>
+                                    <li><a href="category.html">Men's Clothing</a></li>
+                                    <li><a href="category.html">Shoes & Footwear</a></li>
+                                    <li><a href="category.html">Bags & Accessories</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Electronics</h4>
+                                <ul>
+                                    <li><a href="category.html">Smartphones</a></li>
+                                    <li><a href="category.html">Laptops & Computers</a></li>
+                                    <li><a href="category.html">Smartwatches</a></li>
+                                    <li><a href="category.html">Audio & Headphones</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Home & Living</h4>
+                                <ul>
+                                    <li><a href="category.html">Furniture</a></li>
+                                    <li><a href="category.html">Decor & Lighting</a></li>
+                                    <li><a href="category.html">Kitchen & Dining</a></li>
+                                    <li><a href="category.html">Bedding & Bath</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Beauty & Wellness</h4>
+                                <ul>
+                                    <li><a href="category.html">Fragrances</a></li>
+                                    <li><a href="category.html">Skincare</a></li>
+                                    <li><a href="category.html">Makeup</a></li>
+                                    <li><a href="category.html">Health & Fitness</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="new-arrivals.html">New Arrivals</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="nav-icon search-toggle" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="wishlist.html" class="nav-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="cart.html" class="nav-icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Fashion Collection</h1>
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="shop.html">Shop</a>
+                <span>/</span>
+                <span>Fashion</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Category Section -->
+    <section class="category-section">
+        <div class="container">
+            <div class="category-layout">
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filter-group">
+                        <h4>Categories</h4>
+                        <div class="filter-options">
+                            <label><input type="checkbox"> Women's Clothing (124)</label>
+                            <label><input type="checkbox"> Men's Clothing (98)</label>
+                            <label><input type="checkbox"> Shoes & Footwear (67)</label>
+                            <label><input type="checkbox"> Bags & Accessories (45)</label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <div class="price-range">
+                            <input type="number" placeholder="Min" min="0">
+                            <span>-</span>
+                            <input type="number" placeholder="Max" min="0">
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Brand</h4>
+                        <div class="filter-options">
+                            <label><input type="checkbox"> Nike (34)</label>
+                            <label><input type="checkbox"> Adidas (28)</label>
+                            <label><input type="checkbox"> Gucci (19)</label>
+                            <label><input type="checkbox"> Prada (15)</label>
+                            <label><input type="checkbox"> Zara (42)</label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Size</h4>
+                        <div class="filter-options">
+                            <label><input type="checkbox"> XS</label>
+                            <label><input type="checkbox"> S</label>
+                            <label><input type="checkbox"> M</label>
+                            <label><input type="checkbox"> L</label>
+                            <label><input type="checkbox"> XL</label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Rating</h4>
+                        <div class="filter-options">
+                            <label><input type="checkbox"> <i class="fas fa-star" style="color: gold;"></i><i class="fas fa-star" style="color: gold;"></i><i class="fas fa-star" style="color: gold;"></i><i class="fas fa-star" style="color: gold;"></i><i class="fas fa-star" style="color: gold;"></i> & Up</label>
+                            <label><input type="checkbox"> <i class="fas fa-star" style="color: gold;"></i><i class="fas fa-star" style="color: gold;"></i><i class="fas fa-star" style="color: gold;"></i><i class="fas fa-star" style="color: gold;"></i><i class="far fa-star" style="color: gold;"></i> & Up</label>
+                            <label><input type="checkbox"> <i class="fas fa-star" style="color: gold;"></i><i class="fas fa-star" style="color: gold;"></i><i class="fas fa-star" style="color: gold;"></i><i class="far fa-star" style="color: gold;"></i><i class="far fa-star" style="color: gold;"></i> & Up</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">Apply Filters</button>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="products-main">
+                    <div class="products-header">
+                        <p>Showing 1-12 of 240 products</p>
+                        <select class="sort-select">
+                            <option>Sort by: Featured</option>
+                            <option>Price: Low to High</option>
+                            <option>Price: High to Low</option>
+                            <option>Newest First</option>
+                            <option>Best Rated</option>
+                        </select>
+                    </div>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <span class="product-badge new">New</span>
+                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80" alt="Classic Denim Jacket">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Men's Fashion</span>
+                                <h3 class="product-title"><a href="product.html">Classic Denim Jacket</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span>(45)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$159.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <span class="product-badge sale">-20%</span>
+                                <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80" alt="Designer Handbag">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Accessories</span>
+                                <h3 class="product-title"><a href="product.html">Designer Leather Handbag</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                    <span>(89)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="old-price">$299.00</span>
+                                    <span class="current-price">$239.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Running Shoes">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Footwear</span>
+                                <h3 class="product-title"><a href="product.html">Premium Running Shoes</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span>(128)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$129.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <span class="product-badge hot">Hot</span>
+                                <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&q=80" alt="Summer Dress">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Women's Fashion</span>
+                                <h3 class="product-title"><a href="product.html">Elegant Summer Dress</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span>(203)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$89.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80" alt="Classic T-Shirt">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Men's Fashion</span>
+                                <h3 class="product-title"><a href="product.html">Classic White T-Shirt</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                    <span>(67)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$35.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">
+                                <span class="product-badge sale">-30%</span>
+                                <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80" alt="Leather Backpack">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Accessories</span>
+                                <h3 class="product-title"><a href="product.html">Leather Backpack</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span>(156)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="old-price">$199.00</span>
+                                    <span class="current-price">$139.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pagination -->
+                    <div style="display: flex; justify-content: center; gap: 10px; margin-top: 50px;">
+                        <a href="#" class="btn btn-outline" style="padding: 10px 15px;"><i class="fas fa-chevron-left"></i></a>
+                        <a href="#" class="btn btn-primary" style="padding: 10px 18px;">1</a>
+                        <a href="#" class="btn btn-outline" style="padding: 10px 18px;">2</a>
+                        <a href="#" class="btn btn-outline" style="padding: 10px 18px;">3</a>
+                        <a href="#" class="btn btn-outline" style="padding: 10px 18px;">...</a>
+                        <a href="#" class="btn btn-outline" style="padding: 10px 18px;">12</a>
+                        <a href="#" class="btn btn-outline" style="padding: 10px 15px;"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-text">ZANARA</span>
+                        <span class="logo-sub">COMMERCE</span>
+                    </a>
+                    <p>Your premier destination for curated fashion, electronics, and lifestyle products.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="shipping.html">Shipping Info</a></li>
+                        <li><a href="returns.html">Returns</a></li>
+                        <li><a href="track-order.html">Track Order</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get in Touch</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@zanaracommerce.com</li>
+                        <li><i class="fas fa-envelope"></i> support@zanaracommerce.com</li>
+                        <li><i class="fas fa-phone"></i> +1 443 681 9715</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ZANARA Commerce. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    <script src="js/main.js"></script>
+</body>
+</html>

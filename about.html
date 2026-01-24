@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | ZANARA Commerce</title>
+    <meta name="description" content="Learn about ZANARA Commerce - your premier destination for curated fashion, electronics, and lifestyle products. Discover our story, mission, and values.">
+    <meta name="theme-color" content="#1a2744">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header { background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%); padding: 80px 0; text-align: center; color: white; }
+        .page-header h1 { font-size: 48px; margin-bottom: 15px; }
+        .page-header p { font-size: 18px; opacity: 0.9; }
+        .about-section { padding: 80px 0; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-image img { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); }
+        .about-content h2 { font-size: 36px; color: var(--secondary); margin-bottom: 20px; }
+        .about-content p { color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
+        .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        .about-stat { text-align: center; padding: 20px; background: var(--cream); border-radius: var(--radius-md); }
+        .about-stat-number { font-size: 36px; font-weight: 700; color: var(--primary); display: block; }
+        .about-stat-label { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .mission-section { padding: 80px 0; background: var(--cream); }
+        .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        .mission-card { background: white; padding: 50px; border-radius: var(--radius-lg); }
+        .mission-card h3 { font-size: 28px; color: var(--secondary); margin-bottom: 20px; display: flex; align-items: center; gap: 15px; }
+        .mission-card h3 i { color: var(--primary); }
+        .mission-card p { color: var(--text-muted); line-height: 1.8; }
+        .values-section { padding: 80px 0; }
+        .values-section .section-header { text-align: center; margin-bottom: 50px; }
+        .values-section h2 { font-size: 36px; color: var(--secondary); margin-bottom: 15px; }
+        .values-section > .container > p { text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+        .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 50px; }
+        .value-card { text-align: center; padding: 40px 30px; background: var(--gray-50); border-radius: var(--radius-md); transition: var(--transition); }
+        .value-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); background: white; }
+        .value-card .value-icon { width: 80px; height: 80px; background: var(--cream); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; }
+        .value-card .value-icon i { font-size: 32px; color: var(--primary); }
+        .value-card h4 { font-size: 20px; color: var(--secondary); margin-bottom: 15px; }
+        .value-card p { color: var(--text-muted); font-size: 14px; line-height: 1.7; }
+        .story-section { padding: 80px 0; background: var(--secondary); color: white; }
+        .story-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .story-content h2 { font-size: 36px; margin-bottom: 30px; }
+        .story-content p { font-size: 18px; line-height: 1.9; opacity: 0.9; margin-bottom: 20px; }
+        .team-section { padding: 80px 0; }
+        .team-section h2 { font-size: 36px; color: var(--secondary); text-align: center; margin-bottom: 50px; }
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .team-card { text-align: center; }
+        .team-card img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; box-shadow: var(--shadow-md); }
+        .team-card h4 { font-size: 20px; color: var(--secondary); margin-bottom: 5px; }
+        .team-card span { color: var(--primary); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+        @media (max-width: 992px) { .about-grid, .mission-grid { grid-template-columns: 1fr; } .values-grid { grid-template-columns: repeat(2, 1fr); } .team-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .about-stats { grid-template-columns: 1fr; } .values-grid, .team-grid { grid-template-columns: 1fr; } .page-header h1 { font-size: 36px; } }
+    </style>
+    <script>
+        if (sessionStorage.getItem('zanaraAuth') !== 'true') {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-truck"></i> Free Worldwide Shipping on Orders $100+</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fas fa-globe"></i> USD $</a>
+                <a href="account.html"><i class="fas fa-user"></i> Account</a>
+                <a href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">ZANARA</span>
+                <span class="logo-sub">COMMERCE</span>
+            </a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li class="has-dropdown">
+                    <a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <div class="mega-col">
+                                <h4>Fashion</h4>
+                                <ul>
+                                    <li><a href="category.html">Women's Clothing</a></li>
+                                    <li><a href="category.html">Men's Clothing</a></li>
+                                    <li><a href="category.html">Shoes & Footwear</a></li>
+                                    <li><a href="category.html">Bags & Accessories</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Electronics</h4>
+                                <ul>
+                                    <li><a href="category.html">Smartphones</a></li>
+                                    <li><a href="category.html">Laptops & Computers</a></li>
+                                    <li><a href="category.html">Smartwatches</a></li>
+                                    <li><a href="category.html">Audio & Headphones</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Home & Living</h4>
+                                <ul>
+                                    <li><a href="category.html">Furniture</a></li>
+                                    <li><a href="category.html">Decor & Lighting</a></li>
+                                    <li><a href="category.html">Kitchen & Dining</a></li>
+                                    <li><a href="category.html">Bedding & Bath</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-col">
+                                <h4>Beauty & Wellness</h4>
+                                <ul>
+                                    <li><a href="category.html">Fragrances</a></li>
+                                    <li><a href="category.html">Skincare</a></li>
+                                    <li><a href="category.html">Makeup</a></li>
+                                    <li><a href="category.html">Health & Fitness</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="new-arrivals.html">New Arrivals</a></li>
+                <li><a href="deals.html">Deals</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="nav-icon search-toggle" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                </button>
+                <a href="wishlist.html" class="nav-icon">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge">0</span>
+                </a>
+                <a href="cart.html" class="nav-icon cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge" id="cartCount">0</span>
+                </a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About ZANARA</h1>
+            <p>Discover our story and the passion behind premium online shopping</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=500&fit=crop" alt="ZANARA Commerce Team">
+                </div>
+                <div class="about-content">
+                    <h2>Who We Are</h2>
+                    <p>ZANARA Commerce is a premier global e-commerce destination headquartered in Bowie, Maryland, USA. We curate the finest selection of fashion, electronics, home essentials, and lifestyle products from trusted brands around the world.</p>
+                    <p>Founded with a vision to make premium shopping accessible to everyone, we've grown from a small startup to a trusted name serving customers in over 50 countries. Our commitment to quality, authenticity, and customer satisfaction drives everything we do.</p>
+                    <p>We believe that shopping should be an experience, not just a transaction. That's why we combine cutting-edge technology with personalized service to deliver an unparalleled online shopping journey.</p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="about-stat-number">50+</span>
+                            <span class="about-stat-label">Countries Served</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="about-stat-number">2M+</span>
+                            <span class="about-stat-label">Happy Customers</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="about-stat-number">15K+</span>
+                            <span class="about-stat-label">Products</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <p>To democratize access to premium products by creating a seamless, trustworthy, and delightful shopping experience for customers worldwide. We strive to connect people with quality products that enhance their lives, while maintaining the highest standards of service and integrity.</p>
+                </div>
+                <div class="mission-card">
+                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                    <p>To become the world's most trusted and beloved online shopping destination, known for exceptional product curation, outstanding customer service, and a commitment to making premium lifestyle products accessible to everyone, everywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="values-section">
+        <div class="container">
+            <h2>Our Core Values</h2>
+            <p>The principles that guide every decision we make and every interaction we have</p>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h4>Quality First</h4>
+                    <p>We never compromise on quality. Every product is carefully vetted to ensure it meets our high standards.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>Customer Love</h4>
+                    <p>Our customers are at the heart of everything we do. Your satisfaction is our greatest achievement.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Trust & Integrity</h4>
+                    <p>We operate with complete transparency and honesty, building lasting relationships based on trust.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4>Global Mindset</h4>
+                    <p>We celebrate diversity and strive to serve customers from all backgrounds and cultures equally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <h2>Our Story</h2>
+                <p>ZANARA Commerce began with a simple idea: everyone deserves access to quality products, regardless of where they live. What started as a passion project has evolved into a thriving global marketplace.</p>
+                <p>From our headquarters in Maryland, we've built relationships with hundreds of premium brands and suppliers worldwide. Our team works tirelessly to source the best products, negotiate the best prices, and deliver them to your doorstep with care and efficiency.</p>
+                <p>Today, we're proud to serve millions of customers across the globe, but we've never lost sight of our roots. Every order matters to us, and every customer is part of the ZANARA family.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="features" style="padding: 80px 0;">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; color: var(--secondary); margin-bottom: 50px;">Why Shop With Us</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h4>Free Global Shipping</h4>
+                    <p>Complimentary delivery on all orders over $100 worldwide</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>Secure Checkout</h4>
+                    <p>Your payments are protected with bank-level encryption</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-undo"></i></div>
+                    <h4>Easy Returns</h4>
+                    <p>30-day hassle-free return policy on all purchases</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h4>24/7 Support</h4>
+                    <p>Our dedicated team is here to assist you anytime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="newsletter" style="background: var(--primary);">
+        <div class="container">
+            <div class="newsletter-content" style="text-align: center;">
+                <h2 style="color: white;">Ready to Start Shopping?</h2>
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 30px;">Discover our curated collection of premium products from around the world.</p>
+                <a href="shop.html" class="btn btn-white" style="background: white; color: var(--primary);">Explore Our Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-text">ZANARA</span>
+                        <span class="logo-sub">COMMERCE</span>
+                    </a>
+                    <p>Your premier destination for curated fashion, electronics, and lifestyle products. We bring the world's finest brands to your doorstep.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="shipping.html">Shipping Information</a></li>
+                        <li><a href="returns.html">Returns & Exchanges</a></li>
+                        <li><a href="size-guide.html">Size Guide</a></li>
+                        <li><a href="track-order.html">Track Your Order</a></li>
+                        <li><a href="gift-cards.html">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Get in Touch</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@zanaracommerce.com</li>
+                        <li><i class="fas fa-envelope"></i> support@zanaracommerce.com</li>
+                        <li><i class="fas fa-phone"></i> +1 443 681 9715</li>
+                        <li><i class="fas fa-clock"></i> 24/7 Online Support</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <span>We Accept:</span>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-amex"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                            <i class="fab fa-apple-pay"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ZANARA Commerce. All Rights Reserved. | Designed by <strong>Fedelis Andonganyung</strong></p>
+                <div class="footer-legal">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    <script src="js/main.js"></script>
+</body>
+</html>
