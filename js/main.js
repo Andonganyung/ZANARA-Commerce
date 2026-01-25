@@ -1,8 +1,50 @@
 // ZANARA Commerce - Main JavaScript
-// Modern Luxury E-Commerce with Rose Gold & Navy Theme
-// Fully Optimized for All Devices
 
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // =============================================
+    // HERO SLIDER - Auto Flip
+    // =============================================
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    const heroDots = document.querySelectorAll('.hero-dot');
+    const prevBtn = document.querySelector('.hero-prev');
+    const nextBtn = document.querySelector('.hero-next');
+    let currentSlide = 0;
+    let slideInterval;
+    
+    function showSlide(index) {
+        if (heroSlides.length === 0) return;
+        
+        heroSlides.forEach(slide => slide.classList.remove('active'));
+        heroDots.forEach(dot => dot.classList.remove('active'));
+        
+        currentSlide = (index + heroSlides.length) % heroSlides.length;
+        heroSlides[currentSlide].classList.add('active');
+        if (heroDots[currentSlide]) heroDots[currentSlide].classList.add('active');
+    }
+    
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+    
+    function startAutoSlide() {
+        slideInterval = setInterval(nextSlide, 5000);
+    }
+    
+    function resetAutoSlide() {
+        clearInterval(slideInterval);
+        startAutoSlide();
+    }
+    
+    if (heroSlides.length > 1) {
+        startAutoSlide();
+        
+        if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
+        if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
+        
+        heroDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => { showSlide(index); resetAutoSlide(); });
+        });
+    }
     
     // =============================================
     // MOBILE NAVIGATION
@@ -463,5 +505,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    console.log('ZANARA Commerce initialized successfully');
 });
