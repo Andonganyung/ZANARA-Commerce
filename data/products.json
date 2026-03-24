@@ -1,0 +1,356 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Premium Running Shoes",
+      "category": "Fashion",
+      "subcategory": "Footwear",
+      "price": 129.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80",
+        "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&q=80",
+        "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&q=80"
+      ],
+      "rating": 4.5,
+      "reviews": 128,
+      "badge": "Best Seller",
+      "description": "High-performance running shoes with advanced cushioning technology and breathable mesh upper.",
+      "features": ["Breathable mesh", "Advanced cushioning", "Non-slip sole", "Lightweight design"],
+      "inStock": true,
+      "brand": "Premium Collection",
+      "variants": {
+        "colors": [
+          {"name": "Black", "hex": "#000000"},
+          {"name": "White", "hex": "#ffffff"},
+          {"name": "Navy", "hex": "#1a2744"}
+        ],
+        "sizes": ["7", "8", "9", "10", "11", "12"]
+      }
+    },
+    {
+      "id": 2,
+      "title": "Luxury Smartwatch Pro",
+      "category": "Electronics",
+      "subcategory": "Wearables",
+      "price": 349.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80",
+        "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=800&q=80",
+        "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 256,
+      "badge": "New",
+      "description": "Premium smartwatch with fitness tracking, heart rate monitoring, and 7-day battery life.",
+      "features": ["Heart rate monitor", "GPS tracking", "Water resistant", "7-day battery"],
+      "inStock": true,
+      "brand": "Luxury Line",
+      "variants": {
+        "colors": [
+          {"name": "Black", "hex": "#000000"},
+          {"name": "Silver", "hex": "#c0c0c0"},
+          {"name": "Gold", "hex": "#d4a574"}
+        ],
+        "sizes": ["40mm", "44mm"]
+      }
+    },
+    {
+      "id": 3,
+      "title": "Designer Leather Handbag",
+      "category": "Fashion",
+      "subcategory": "Accessories",
+      "price": 239.00,
+      "originalPrice": 299.00,
+      "discount": 20,
+      "image": "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80",
+        "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=800&q=80"
+      ],
+      "rating": 4.0,
+      "reviews": 89,
+      "badge": "Sale",
+      "description": "Elegant leather handbag with multiple compartments and adjustable strap.",
+      "features": ["Genuine leather", "Multiple pockets", "Adjustable strap", "Gold hardware"],
+      "inStock": true,
+      "brand": "Designer Series",
+      "variants": {
+        "colors": [
+          {"name": "Black", "hex": "#000000"},
+          {"name": "Brown", "hex": "#8b4513"},
+          {"name": "Tan", "hex": "#d2b48c"}
+        ],
+        "sizes": ["One Size"]
+      }
+    },
+    {
+      "id": 4,
+      "title": "Signature Eau de Parfum",
+      "category": "Beauty",
+      "subcategory": "Fragrances",
+      "price": 89.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=800&q=80",
+        "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 312,
+      "badge": null,
+      "description": "Sophisticated fragrance with notes of jasmine, vanilla, and amber. Long-lasting scent.",
+      "features": ["100ml bottle", "Long-lasting", "Gift box included", "Premium ingredients"],
+      "inStock": true,
+      "brand": "Luxury Line",
+      "variants": {
+        "colors": [],
+        "sizes": ["50ml", "100ml"]
+      }
+    },
+    {
+      "id": 5,
+      "title": "Smart Device Pro Max",
+      "category": "Electronics",
+      "subcategory": "Smartphones",
+      "price": 849.00,
+      "originalPrice": 999.00,
+      "discount": 15,
+      "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80",
+        "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 245,
+      "badge": "Sale",
+      "description": "Latest flagship smartphone with advanced camera system and 5G connectivity.",
+      "features": ["5G capable", "Triple camera", "All-day battery", "Fast charging"],
+      "inStock": true,
+      "brand": "Premium Collection",
+      "variants": {
+        "colors": [
+          {"name": "Midnight", "hex": "#191970"},
+          {"name": "Silver", "hex": "#c0c0c0"},
+          {"name": "Gold", "hex": "#ffd700"}
+        ],
+        "sizes": ["128GB", "256GB", "512GB"]
+      }
+    },
+    {
+      "id": 6,
+      "title": "Professional Laptop 15\"",
+      "category": "Electronics",
+      "subcategory": "Laptops",
+      "price": 1999.00,
+      "originalPrice": 2499.00,
+      "discount": 20,
+      "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&q=80",
+        "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&q=80"
+      ],
+      "rating": 4.5,
+      "reviews": 178,
+      "badge": "Sale",
+      "description": "High-performance laptop perfect for professionals and creatives.",
+      "features": ["15.6\" display", "16GB RAM", "512GB SSD", "10-hour battery"],
+      "inStock": true,
+      "brand": "Premium Collection",
+      "variants": {
+        "colors": [
+          {"name": "Space Gray", "hex": "#808080"},
+          {"name": "Silver", "hex": "#c0c0c0"}
+        ],
+        "sizes": ["512GB", "1TB"]
+      }
+    },
+    {
+      "id": 7,
+      "title": "Classic Denim Jacket",
+      "category": "Fashion",
+      "subcategory": "Men's Clothing",
+      "price": 159.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80",
+        "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&q=80"
+      ],
+      "rating": 4.5,
+      "reviews": 45,
+      "badge": "New",
+      "description": "Timeless denim jacket with classic fit and premium denim fabric.",
+      "features": ["100% cotton denim", "Button closure", "Chest pockets", "Classic fit"],
+      "inStock": true,
+      "brand": "Essential Basics",
+      "variants": {
+        "colors": [
+          {"name": "Light Wash", "hex": "#6495ed"},
+          {"name": "Dark Wash", "hex": "#1e3a8a"}
+        ],
+        "sizes": ["S", "M", "L", "XL", "XXL"]
+      }
+    },
+    {
+      "id": 8,
+      "title": "Premium Wireless Earbuds",
+      "category": "Electronics",
+      "subcategory": "Audio",
+      "price": 199.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&q=80",
+        "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 187,
+      "badge": "New",
+      "description": "True wireless earbuds with active noise cancellation and premium sound quality.",
+      "features": ["ANC technology", "30-hour battery", "Water resistant", "Touch controls"],
+      "inStock": true,
+      "brand": "Premium Collection",
+      "variants": {
+        "colors": [
+          {"name": "White", "hex": "#ffffff"},
+          {"name": "Black", "hex": "#000000"}
+        ],
+        "sizes": ["One Size"]
+      }
+    },
+    {
+      "id": 9,
+      "title": "Modern Velvet Sofa",
+      "category": "Home & Living",
+      "subcategory": "Furniture",
+      "price": 899.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80",
+        "https://images.unsplash.com/photo-1550254478-ead40cc54513?w=800&q=80"
+      ],
+      "rating": 4.0,
+      "reviews": 32,
+      "badge": "New",
+      "description": "Luxurious velvet sofa with modern design and comfortable seating.",
+      "features": ["Velvet upholstery", "Solid wood frame", "Removable cushions", "Easy assembly"],
+      "inStock": true,
+      "brand": "Designer Series",
+      "variants": {
+        "colors": [
+          {"name": "Navy", "hex": "#1a2744"},
+          {"name": "Gray", "hex": "#808080"},
+          {"name": "Emerald", "hex": "#50c878"}
+        ],
+        "sizes": ["3-Seater"]
+      }
+    },
+    {
+      "id": 10,
+      "title": "Luxury Skincare Collection",
+      "category": "Beauty",
+      "subcategory": "Skincare",
+      "price": 149.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=800&q=80",
+        "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=800&q=80"
+      ],
+      "rating": 4.5,
+      "reviews": 156,
+      "badge": "Best Seller",
+      "description": "Complete skincare routine with cleanser, toner, serum, and moisturizer.",
+      "features": ["4-step routine", "All skin types", "Natural ingredients", "Dermatologist tested"],
+      "inStock": true,
+      "brand": "Luxury Line",
+      "variants": {
+        "colors": [],
+        "sizes": ["Full Size"]
+      }
+    },
+    {
+      "id": 11,
+      "title": "Classic Timepiece Watch",
+      "category": "Fashion",
+      "subcategory": "Accessories",
+      "price": 450.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1560343090-f0409e92791a?w=800&q=80",
+        "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 98,
+      "badge": "New",
+      "description": "Elegant timepiece with automatic movement and sapphire crystal.",
+      "features": ["Automatic movement", "Sapphire crystal", "Leather strap", "Water resistant"],
+      "inStock": true,
+      "brand": "Luxury Line",
+      "variants": {
+        "colors": [
+          {"name": "Black", "hex": "#000000"},
+          {"name": "Brown", "hex": "#8b4513"}
+        ],
+        "sizes": ["42mm"]
+      }
+    },
+    {
+      "id": 12,
+      "title": "Elegant Summer Dress",
+      "category": "Fashion",
+      "subcategory": "Women's Clothing",
+      "price": 108.00,
+      "originalPrice": 120.00,
+      "discount": 10,
+      "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=80",
+        "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800&q=80"
+      ],
+      "rating": 4.5,
+      "reviews": 67,
+      "badge": "Sale",
+      "description": "Flowing summer dress perfect for warm weather occasions.",
+      "features": ["Breathable fabric", "Flowy design", "Machine washable", "Adjustable straps"],
+      "inStock": true,
+      "brand": "Designer Series",
+      "variants": {
+        "colors": [
+          {"name": "Coral", "hex": "#ff7f50"},
+          {"name": "Sky Blue", "hex": "#87ceeb"},
+          {"name": "White", "hex": "#ffffff"}
+        ],
+        "sizes": ["XS", "S", "M", "L", "XL"]
+      }
+    }
+  ],
+  "categories": [
+    {"name": "Fashion", "count": 240, "subcategories": ["Women's Clothing", "Men's Clothing", "Footwear", "Accessories"]},
+    {"name": "Electronics", "count": 180, "subcategories": ["Smartphones", "Laptops", "Audio", "Wearables"]},
+    {"name": "Home & Living", "count": 320, "subcategories": ["Furniture", "Decor", "Kitchen", "Bedding"]},
+    {"name": "Beauty", "count": 150, "subcategories": ["Fragrances", "Skincare", "Makeup", "Haircare"]},
+    {"name": "Accessories", "count": 200, "subcategories": ["Watches", "Jewelry", "Bags", "Sunglasses"]},
+    {"name": "Sports & Fitness", "count": 95, "subcategories": ["Equipment", "Apparel", "Accessories"]}
+  ],
+  "brands": [
+    {"name": "Premium Collection", "count": 85},
+    {"name": "Designer Series", "count": 120},
+    {"name": "Luxury Line", "count": 95},
+    {"name": "Essential Basics", "count": 75}
+  ]
+}
