@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Migration | ZANARA Admin</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body class="login-page">
+    <div class="login-container" style="max-width:600px;">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>ZANARA</h1>
+                <p>Data Migration Tool</p>
+            </div>
+            
+            <div id="migrationStatus">
+                <p style="text-align:center; color:#6c757d;">
+                    This tool will migrate your products from products.json to Firebase Firestore.
+                </p>
+                <button class="btn btn-primary btn-block" onclick="startMigration()" id="migrateBtn">
+                    Start Migration
+                </button>
+            </div>
+            
+            <div id="migrationLog" style="margin-top:20px; padding:15px; background:#f8f9fa; border-radius:4px; max-height:400px; overflow-y:auto; display:none;">
+                <h4>Migration Log:</h4>
+                <div id="logContent" style="font-family:monospace; font-size:12px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    
+    <script>
+        function log(message, type = 'info') {
+            const logContent = document.getElementById('logContent');
+            const color = type === 'error' ? 'red' : type === 'success' ? 'green' : 'black';
+            logContent.innerHTML += `<div style="color:${color};">[${new Date().toLocaleTimeString()}] ${message}</div>`;
+            logContent.scrollTop = logContent.scrollHeight;
+        }
+
+        async function startMigration() {
+            const btn = document.getElementById('migrateBtn');
+            const logDiv = document.getElementById('migrationLog');
+            
+            btn.disabled = true;
+            btn.innerHTML = 'Migrating...';
+            logDiv.style.display = 'block';
+            
+            try {
+                // Check authentication
+                const user = auth.currentUser;
+                if (!user) {
+                    log('Please login first!', 'error');
+                    setTimeout(() => window.location.href = 'login.html', 2000);
+                    return;
+                }
+                
+                log('Starting migration...', 'info');
+                
+                // Fetch products.json
+                log('Fetching products.json...', 'info');
+                const response = await fetch('../data/products.json');
+                const data = await response.json();
+                
+                log(`Found ${data.products.length} products`, 'success');
+                log(`Found ${data.categories.length} categories`, 'success');
+                log(`Found ${data.brands.length} brands`, 'success');
+                
+                // Migrate categories
+                log('Migrating categories...', 'info');
+                for (const category of data.categories) {
+                    await db.collection('categories').doc(category.name).set({
+                        name: category.name,
+                        count: category.count,
+                        subcategories: category.subcategories || [],
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    log(`✓ Category: ${category.name}`, 'success');
+                }
+                
+                // Migrate brands
+                log('Migrating brands...', 'info');
+                for (const brand of data.brands) {
+                    await db.collection('brands').doc(brand.name).set({
+                        name: brand.name,
+                        count: brand.count,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    log(`✓ Brand: ${brand.name}`, 'success');
+                }
+                
+                // Migrate products
+                log('Migrating products...', 'info');
+                for (const product of data.products) {
+                    const productData = {
+                        ...product,
+                        status: 'published',
+                        featured: product.badge === 'Best Seller',
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    };
+                    
+                    await db.collection('products').add(productData);
+                    log(`✓ Product: ${product.title}`, 'success');
+                }
+                
+                log('', 'info');
+                log('✅ MIGRATION COMPLETE!', 'success');
+                log(`Migrated ${data.products.length} products, ${data.categories.length} categories, ${data.brands.length} brands`, 'success');
+                log('', 'info');
+                log('You can now go to the Admin Dashboard', 'info');
+                
+                btn.innerHTML = 'Migration Complete!';
+                
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 3000);
+                
+            } catch (error) {
+                log('ERROR: ' + error.message, 'error');
+                console.error('Migration error:', error);
+                btn.disabled = false;
+                btn.innerHTML = 'Try Again';
+            }
+        }
+    </script>
+</body>
+</html>

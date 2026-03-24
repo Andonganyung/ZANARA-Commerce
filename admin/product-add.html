@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product | ZANARA Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="logo"><h2>ZANARA</h2><p>Admin Panel</p></div>
+            <nav class="admin-nav">
+                <a href="index.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                <a href="products.html" class="active"><i class="fas fa-box"></i><span>Products</span></a>
+                <a href="categories.html"><i class="fas fa-tags"></i><span>Categories</span></a>
+                <a href="orders.html"><i class="fas fa-shopping-cart"></i><span>Orders</span></a>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>Add New Product</h1>
+                <div class="admin-actions">
+                    <a href="products.html" class="btn">← Back to Products</a>
+                </div>
+            </div>
+
+            <form id="productForm" class="card">
+                <div class="alert alert-error" id="errorAlert" style="display:none;"></div>
+
+                <h3>Basic Information</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Product Title *</label>
+                        <input type="text" id="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Brand</label>
+                        <input type="text" id="brand">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category *</label>
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Subcategory</label>
+                        <input type="text" id="subcategory">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description *</label>
+                    <textarea id="description" required></textarea>
+                </div>
+
+                <h3 style="margin-top:30px;">Pricing</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Price ($) *</label>
+                        <input type="number" id="price" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Original Price ($)</label>
+                        <input type="number" id="originalPrice" step="0.01">
+                    </div>
+                </div>
+
+                <h3 style="margin-top:30px;">Images</h3>
+                <div class="form-group">
+                    <label class="image-upload" for="imageInput">
+                        <i class="fas fa-cloud-upload-alt" style="font-size:40px; color:#6c757d;"></i>
+                        <p>Click to upload images</p>
+                        <small>Supports multiple images (PNG, JPG, WEBP)</small>
+                        <input type="file" id="imageInput" accept="image/*" multiple>
+                    </label>
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+
+                <h3 style="margin-top:30px;">Inventory & Status</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Stock Status</label>
+                        <select id="inStock">
+                            <option value="true">In Stock</option>
+                            <option value="false">Out of Stock</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Status</label>
+                        <select id="status">
+                            <option value="published">Published</option>
+                            <option value="archived">Archived</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="featured">
+                        Featured Product
+                    </label>
+                </div>
+
+                <div style="display:flex; gap:10px; margin-top:30px;">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <i class="fas fa-save"></i> Save Product
+                    </button>
+                    <button type="button" class="btn" onclick="window.history.back()">Cancel</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/product-form.js"></script>
+</body>
+</html>

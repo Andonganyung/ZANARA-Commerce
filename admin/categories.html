@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories | ZANARA Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="logo"><h2>ZANARA</h2><p>Admin Panel</p></div>
+            <nav class="admin-nav">
+                <a href="index.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                <a href="products.html"><i class="fas fa-box"></i><span>Products</span></a>
+                <a href="categories.html" class="active"><i class="fas fa-tags"></i><span>Categories</span></a>
+                <a href="orders.html"><i class="fas fa-shopping-cart"></i><span>Orders</span></a>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>Categories</h1>
+            </div>
+
+            <div class="card">
+                <div id="categoriesTable">
+                    <div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    
+    <script>
+        auth.onAuthStateChanged(user => {
+            if (!user) window.location.href = 'login.html';
+            else loadCategories();
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            await auth.signOut();
+        });
+
+        async function loadCategories() {
+            try {
+                const snapshot = await db.collection('categories').get();
+                const categories = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+                
+                document.getElementById('categoriesTable').innerHTML = `
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Product Count</th>
+                                <th>Subcategories</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${categories.map(c => `
+                                <tr>
+                                    <td><strong>${c.name}</strong></td>
+                                    <td>${c.count || 0}</td>
+                                    <td>${(c.subcategories || []).join(', ')}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

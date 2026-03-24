@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | ZANARA Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="logo"><h2>ZANARA</h2><p>Admin Panel</p></div>
+            <nav class="admin-nav">
+                <a href="index.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                <a href="products.html" class="active"><i class="fas fa-box"></i><span>Products</span></a>
+                <a href="categories.html"><i class="fas fa-tags"></i><span>Categories</span></a>
+                <a href="orders.html"><i class="fas fa-shopping-cart"></i><span>Orders</span></a>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>Products</h1>
+                <div class="admin-actions">
+                    <button class="btn btn-primary" onclick="window.location.href='product-add.html'">
+                        <i class="fas fa-plus"></i> Add Product
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="card">
+                <div style="display:flex; gap:15px; flex-wrap:wrap;">
+                    <input type="text" id="searchInput" placeholder="Search products..." style="flex:1; min-width:250px; padding:10px; border:1px solid #dee2e6; border-radius:4px;">
+                    <select id="categoryFilter" style="padding:10px; border:1px solid #dee2e6; border-radius:4px;">
+                        <option value="">All Categories</option>
+                    </select>
+                    <select id="statusFilter" style="padding:10px; border:1px solid #dee2e6; border-radius:4px;">
+                        <option value="">All Status</option>
+                        <option value="published">Published</option>
+                        <option value="archived">Archived</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Table -->
+            <div class="card">
+                <div id="productsTable">
+                    <div class="loading"><i class="fas fa-spinner fa-spin"></i> Loading products...</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    
+    <script>
+        let allProducts = [];
+
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            loadProducts();
+            loadCategories();
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            await auth.signOut();
+        });
+
+        // Filters
+        document.getElementById('searchInput').addEventListener('input', filterProducts);
+        document.getElementById('categoryFilter').addEventListener('change', filterProducts);
+        document.getElementById('statusFilter').addEventListener('change', filterProducts);
+
+        async function loadProducts() {
+            try {
+                const snapshot = await db.collection('products').orderBy('createdAt', 'desc').get();
+                allProducts = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+                renderProducts(allProducts);
+            } catch (error) {
+                console.error('Error loading products:', error);
+                document.getElementById('productsTable').innerHTML = 
+                    '<div class="alert alert-error">Error loading products</div>';
+            }
+        }
+
+        async function loadCategories() {
+            try {
+                const snapshot = await db.collection('categories').get();
+                const categories = snapshot.docs.map(doc => doc.data().name);
+                const select = document.getElementById('categoryFilter');
+                categories.forEach(cat => {
+                    const option = document.createElement('option');
+                    option.value = cat;
+                    option.textContent = cat;
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Error loading categories:', error);
+            }
+        }
+
+        function filterProducts() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const status = document.getElementById('statusFilter').value;
+
+            const filtered = allProducts.filter(p => {
+                const matchesSearch = p.title.toLowerCase().includes(search) || 
+                                     p.description?.toLowerCase().includes(search);
+                const matchesCategory = !category || p.category === category;
+                const matchesStatus = !status || p.status === status;
+                return matchesSearch && matchesCategory && matchesStatus;
+            });
+
+            renderProducts(filtered);
+        }
+
+        function renderProducts(products) {
+            const container = document.getElementById('productsTable');
+            
+            if (products.length === 0) {
+                container.innerHTML = '<p style="text-align:center; padding:40px; color:#6c757d;">No products found</p>';
+                return;
+            }
+
+            container.innerHTML = `
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${products.map(p => `
+                            <tr>
+                                <td><img src="${p.image || p.images?.[0] || 'https://via.placeholder.com/50'}" alt="${p.title}"></td>
+                                <td><strong>${p.title}</strong><br><small>${p.brand || ''}</small></td>
+                                <td>${p.category}</td>
+                                <td>$${parseFloat(p.price).toFixed(2)}</td>
+                                <td>
+                                    <span class="badge ${p.status === 'archived' ? 'badge-danger' : 'badge-success'}">
+                                        ${p.status === 'archived' ? 'Archived' : 'Published'}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="action-btns">
+                                        <a href="product-edit.html?id=${p.id}" class="btn-icon btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button onclick="toggleArchive('${p.id}', '${p.status}')" class="btn-icon" title="${p.status === 'archived' ? 'Restore' : 'Archive'}">
+                                            <i class="fas fa-${p.status === 'archived' ? 'undo' : 'archive'}"></i>
+                                        </button>
+                                        <button onclick="deleteProduct('${p.id}', '${p.title}')" class="btn-icon btn-delete" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        async function toggleArchive(id, currentStatus) {
+            const newStatus = currentStatus === 'archived' ? 'published' : 'archived';
+            if (confirm(`${newStatus === 'archived' ? 'Archive' : 'Restore'} this product?`)) {
+                try {
+                    await db.collection('products').doc(id).update({
+                        status: newStatus,
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    loadProducts();
+                } catch (error) {
+                    alert('Error updating product: ' + error.message);
+                }
+            }
+        }
+
+        async function deleteProduct(id, title) {
+            if (confirm(`Permanently delete "${title}"? This cannot be undone!`)) {
+                if (confirm('Are you absolutely sure? This will delete all product data forever.')) {
+                    try {
+                        await db.collection('products').doc(id).delete();
+                        loadProducts();
+                    } catch (error) {
+                        alert('Error deleting product: ' + error.message);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

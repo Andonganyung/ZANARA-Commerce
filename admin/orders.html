@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders | ZANARA Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="logo"><h2>ZANARA</h2><p>Admin Panel</p></div>
+            <nav class="admin-nav">
+                <a href="index.html"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                <a href="products.html"><i class="fas fa-box"></i><span>Products</span></a>
+                <a href="categories.html"><i class="fas fa-tags"></i><span>Categories</span></a>
+                <a href="orders.html" class="active"><i class="fas fa-shopping-cart"></i><span>Orders</span></a>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>Orders</h1>
+            </div>
+
+            <div class="card">
+                <p style="text-align:center; padding:40px; color:#6c757d;">
+                    <i class="fas fa-shopping-cart" style="font-size:48px; opacity:0.3; margin-bottom:20px;"></i><br>
+                    Orders will appear here once you integrate payment processing.<br>
+                    <small>Currently using localStorage for demo purposes.</small>
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    
+    <script>
+        auth.onAuthStateChanged(user => {
+            if (!user) window.location.href = 'login.html';
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            await auth.signOut();
+        });
+    </script>
+</body>
+</html>

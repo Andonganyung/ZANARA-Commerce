@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | ZANARA Commerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="logo">
+                <h2>ZANARA</h2>
+                <p>Admin Panel</p>
+            </div>
+            <nav class="admin-nav">
+                <a href="index.html" class="active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="products.html">
+                    <i class="fas fa-box"></i>
+                    <span>Products</span>
+                </a>
+                <a href="categories.html">
+                    <i class="fas fa-tags"></i>
+                    <span>Categories</span>
+                </a>
+                <a href="orders.html">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Orders</span>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>Dashboard</h1>
+                <div class="admin-actions">
+                    <span id="userEmail"></span>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin-bottom:30px;">
+                <div class="card">
+                    <h4 style="color:#6c757d; font-size:14px; margin-bottom:10px;">Total Products</h4>
+                    <p style="font-size:32px; font-weight:bold; color:#1a2744;" id="totalProducts">-</p>
+                </div>
+                <div class="card">
+                    <h4 style="color:#6c757d; font-size:14px; margin-bottom:10px;">Published</h4>
+                    <p style="font-size:32px; font-weight:bold; color:#28a745;" id="publishedProducts">-</p>
+                </div>
+                <div class="card">
+                    <h4 style="color:#6c757d; font-size:14px; margin-bottom:10px;">Archived</h4>
+                    <p style="font-size:32px; font-weight:bold; color:#dc3545;" id="archivedProducts">-</p>
+                </div>
+                <div class="card">
+                    <h4 style="color:#6c757d; font-size:14px; margin-bottom:10px;">Categories</h4>
+                    <p style="font-size:32px; font-weight:bold; color:#ffc107;" id="totalCategories">-</p>
+                </div>
+            </div>
+
+            <!-- Recent Products -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Recent Products</h3>
+                    <a href="products.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Product
+                    </a>
+                </div>
+                <div id="recentProducts">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i> Loading...
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    
+    <!-- Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+    
+    <!-- Dashboard Logic -->
+    <script>
+        // Check authentication
+        auth.onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            document.getElementById('userEmail').textContent = user.email;
+            loadDashboard();
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            await auth.signOut();
+            window.location.href = 'login.html';
+        });
+
+        async function loadDashboard() {
+            try {
+                // Get products
+                const productsSnapshot = await db.collection('products').get();
+                const products = productsSnapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
+                
+                // Calculate stats
+                const published = products.filter(p => p.status !== 'archived').length;
+                const archived = products.filter(p => p.status === 'archived').length;
+                
+                document.getElementById('totalProducts').textContent = products.length;
+                document.getElementById('publishedProducts').textContent = published;
+                document.getElementById('archivedProducts').textContent = archived;
+                
+                // Get categories
+                const categoriesSnapshot = await db.collection('categories').get();
+                document.getElementById('totalCategories').textContent = categoriesSnapshot.size;
+                
+                // Show recent products
+                const recent = products.slice(0, 5);
+                renderRecentProducts(recent);
+                
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+                document.getElementById('recentProducts').innerHTML = 
+                    '<div class="alert alert-error">Error loading data. Please refresh the page.</div>';
+            }
+        }
+
+        function renderRecentProducts(products) {
+            const container = document.getElementById('recentProducts');
+            
+            if (products.length === 0) {
+                container.innerHTML = '<p style="text-align:center; padding:40px; color:#6c757d;">No products yet. <a href="products.html">Add your first product</a></p>';
+                return;
+            }
+            
+            container.innerHTML = `
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${products.map(product => `
+                            <tr>
+                                <td><img src="${product.image || product.images?.[0] || 'https://via.placeholder.com/50'}" alt="${product.title}"></td>
+                                <td><strong>${product.title}</strong></td>
+                                <td>${product.category}</td>
+                                <td>$${parseFloat(product.price).toFixed(2)}</td>
+                                <td>
+                                    <span class="badge ${product.status === 'archived' ? 'badge-danger' : 'badge-success'}">
+                                        ${product.status === 'archived' ? 'Archived' : 'Published'}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="action-btns">
+                                        <a href="product-edit.html?id=${product.id}" class="btn-icon btn-edit" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="../product.html?id=${product.id}" class="btn-icon btn-view" title="View" target="_blank">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+    </script>
+</body>
+</html>
