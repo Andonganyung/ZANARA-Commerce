@@ -35,43 +35,37 @@
     </script>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-left">
-                <span><i class="fas fa-fire"></i> Flash Sale: Up to 50% Off Selected Items!</span>
-            </div>
-            <div class="top-bar-right">
-                <a href="#"><i class="fas fa-globe"></i> USD $</a>
-                <a href="account.html"><i class="fas fa-user"></i> Account</a>
-                <a href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a>
+    <header class="site-header">
+        <div class="header-top">
+            <div class="container">
+                <a href="index.html" class="logo"><span class="logo-text">ZANARA</span><span class="logo-sub">COMMERCE</span></a>
+                <div class="header-deliver"><span class="deliver-sub">Deliver to</span><span class="deliver-main"><i class="fas fa-map-marker-alt"></i> United States</span></div>
+                <div class="header-search">
+                    <select class="search-category"><option>All Categories</option><option>Fashion</option><option>Electronics</option><option>Home & Living</option><option>Beauty</option></select>
+                    <input type="text" placeholder="Search ZANARA Commerce">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="header-actions">
+                    <a href="account.html" class="header-action"><span class="action-sub">Hello, Sign in</span><span class="action-main">Account & Lists <i class="fas fa-caret-down"></i></span></a>
+                    <a href="track-order.html" class="header-action"><span class="action-sub">Returns</span><span class="action-main">& Orders</span></a>
+                    <a href="cart.html" class="header-cart"><i class="fas fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span><span class="cart-text">Cart</span></a>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
             </div>
         </div>
+        <nav class="header-nav" id="headerNav">
+            <div class="container">
+                <button class="nav-all" id="navAllBtn"><i class="fas fa-bars"></i> All</button>
+                <a href="deals.html">Today's Deals</a><a href="new-arrivals.html">New Arrivals</a><a href="category.html">Fashion</a><a href="category.html">Electronics</a><a href="category.html">Home & Living</a><a href="category.html">Beauty</a><a href="contact.html">Customer Service</a>
+            </div>
+        </nav>
+    </header>
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-header"><i class="fas fa-user-circle"></i><span>Hello, Customer</span><button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button></div>
+        <div class="sidebar-section"><h4>Shop By Department</h4><a href="category.html">Fashion</a><a href="category.html">Electronics</a><a href="category.html">Home & Living</a><a href="category.html">Beauty & Wellness</a></div>
+        <div class="sidebar-section"><h4>Help & Settings</h4><a href="account.html">Your Account</a><a href="contact.html">Customer Service</a><a href="#" onclick="sessionStorage.removeItem('zanaraAuth');window.location.href='login.html';">Sign Out</a></div>
     </div>
-
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <span class="logo-text">ZANARA</span>
-                <span class="logo-sub">COMMERCE</span>
-            </a>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">Home</a></li>
-                <li class="has-dropdown"><a href="shop.html">Shop <i class="fas fa-chevron-down"></i></a></li>
-                <li><a href="new-arrivals.html">New Arrivals</a></li>
-                <li><a href="deals.html" class="active">Deals</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="nav-actions">
-                <button class="nav-icon search-toggle" id="searchToggle"><i class="fas fa-search"></i></button>
-                <a href="wishlist.html" class="nav-icon"><i class="fas fa-heart"></i><span class="badge">0</span></a>
-                <a href="cart.html" class="nav-icon cart-icon"><i class="fas fa-shopping-bag"></i><span class="badge" id="cartCount">0</span></a>
-            </div>
-            <button class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button>
-        </div>
-    </nav>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <!-- Page Header -->
     <section class="page-header">
@@ -251,33 +245,19 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <div class="back-to-top-bar" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span>Back to top</span></div>
     <footer class="footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="index.html" class="logo"><span class="logo-text">ZANARA</span><span class="logo-sub">COMMERCE</span></a>
-                    <p>Your premier destination for curated fashion, electronics, and lifestyle products.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="faq.html">FAQs</a></li></ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Customer Service</h4>
-                    <ul><li><a href="shipping.html">Shipping Info</a></li><li><a href="returns.html">Returns</a></li><li><a href="track-order.html">Track Order</a></li></ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Get in Touch</h4>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> info@zanaracommerce.com</li>
-                        <li><i class="fas fa-envelope"></i> support@zanaracommerce.com</li>
-                        <li><i class="fas fa-phone"></i> +1 443 681 9715</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom"><p>&copy; 2025 ZANARA Commerce. All Rights Reserved.</p></div>
-        </div>
+        <div class="footer-main"><div class="container"><div class="footer-grid">
+            <div class="footer-col"><h4>Get to Know Us</h4><a href="about.html">About ZANARA</a><a href="careers.html">Careers</a><a href="blog.html">Blog</a></div>
+            <div class="footer-col"><h4>Make Money with Us</h4><a href="#">Sell on ZANARA</a><a href="#">Become an Affiliate</a></div>
+            <div class="footer-col"><h4>ZANARA Payment</h4><a href="gift-cards.html">Gift Cards</a><a href="#">Shop with Points</a></div>
+            <div class="footer-col"><h4>Let Us Help You</h4><a href="account.html">Your Account</a><a href="shipping.html">Shipping Info</a><a href="returns.html">Returns</a><a href="contact.html">Help</a></div>
+        </div></div></div>
+        <div class="footer-bottom"><div class="container">
+            <a href="index.html" class="logo"><span class="logo-text">ZANARA</span><span class="logo-sub">COMMERCE</span></a>
+            <div class="footer-legal"><a href="terms.html">Conditions of Use</a><a href="privacy.html">Privacy Notice</a></div>
+            <p class="copyright">&copy; 2025 ZANARA Commerce. All Rights Reserved. | Designed by Fedelis Andonganyung</p>
+        </div></div>
     </footer>
     <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
     <script src="js/main.js"></script>
