@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>African Food - West African Cuisine | ZANARA Commerce</title>
+    <meta name="description" content="Discover authentic West African food products from Cameroon, Nigeria, Ghana, and across the region. From traditional spices to cooking essentials.">
+    <meta name="theme-color" content="#1a2744">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script>if(sessionStorage.getItem('zanaraAuth')!=='true'){window.location.href='login.html';}</script>
+</head>
+<body>
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="header-top">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">ZANARA</span>
+                    <span class="logo-sub">COMMERCE</span>
+                </a>
+                <div class="header-deliver">
+                    <span class="deliver-sub">Deliver to</span>
+                    <span class="deliver-main"><i class="fas fa-map-marker-alt"></i> United States</span>
+                </div>
+                <div class="header-search">
+                    <select class="search-category">
+                        <option>All Categories</option>
+                        <option>Fashion</option>
+                        <option>Electronics</option>
+                        <option>Home & Living</option>
+                        <option>Beauty</option>
+                    </select>
+                    <input type="text" placeholder="Search ZANARA Commerce">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="header-actions">
+                    <a href="account.html" class="header-action">
+                        <span class="action-sub">Hello, Sign in</span>
+                        <span class="action-main">Account & Lists <i class="fas fa-caret-down"></i></span>
+                    </a>
+                    <a href="track-order.html" class="header-action">
+                        <span class="action-sub">Returns</span>
+                        <span class="action-main">& Orders</span>
+                    </a>
+                    <a href="cart.html" class="header-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                        <span class="cart-text">Cart</span>
+                    </a>
+                </div>
+                <button class="mobile-toggle" id="mobileToggle">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <nav class="header-nav" id="headerNav">
+            <div class="container">
+                <button class="nav-all" id="navAllBtn"><i class="fas fa-bars"></i> All</button>
+                <a href="deals.html">Today's Deals</a>
+                <a href="new-arrivals.html">New Arrivals</a>
+                <a href="category.html">Fashion</a>
+                <a href="category.html">Electronics</a>
+                <a href="category.html">Home & Living</a>
+                <a href="category.html">Beauty</a>
+                <a href="gift-cards.html">Gift Cards</a>
+                <a href="contact.html">Customer Service</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar-menu" id="sidebarMenu">
+        <div class="sidebar-header">
+            <i class="fas fa-user-circle"></i>
+            <span>Hello, Customer</span>
+            <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sidebar-section">
+            <h4>Trending</h4>
+            <a href="deals.html">Best Sellers</a>
+            <a href="new-arrivals.html">New Releases</a>
+            <a href="deals.html">Today's Deals</a>
+        </div>
+        <div class="sidebar-section">
+            <h4>Shop By Department</h4>
+            <a href="category.html">Fashion</a>
+            <a href="category.html">Electronics</a>
+            <a href="category.html">Home & Living</a>
+            <a href="category.html">Beauty & Wellness</a>
+            <a href="category.html">Sports & Fitness</a>
+            <a href="category.html">Accessories</a>
+        </div>
+        <div class="sidebar-section">
+            <h4>Help & Settings</h4>
+            <a href="account.html">Your Account</a>
+            <a href="contact.html">Customer Service</a>
+            <a href="#" onclick="sessionStorage.removeItem('zanaraAuth');window.location.href='login.html';">Sign Out</a>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>West African Food & Ingredients</h1>
+            <nav class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>African Food</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="shop-section">
+        <div class="container">
+            <div class="shop-layout">
+                <!-- Sidebar Filters -->
+                <aside class="shop-sidebar">
+                    <div class="filter-group">
+                        <h4>Categories</h4>
+                        <ul class="filter-list">
+                            <li><a href="category.html">Fashion <span>(240)</span></a></li>
+                            <li><a href="category.html">Electronics <span>(180)</span></a></li>
+                            <li><a href="category.html">Home & Living <span>(320)</span></a></li>
+                            <li><a href="category.html">Beauty <span>(150)</span></a></li>
+                            <li><a href="category.html">Accessories <span>(200)</span></a></li>
+                            <li><a href="category.html">Sports & Fitness <span>(95)</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <div class="price-filter">
+                            <input type="range" min="0" max="5000" value="2500" class="price-range">
+                            <div class="price-inputs">
+                                <span>$0</span>
+                                <span>$5000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Brand</h4>
+                        <ul class="filter-list checkbox-list">
+                            <li><label><input type="checkbox"> Premium Collection</label></li>
+                            <li><label><input type="checkbox"> Designer Series</label></li>
+                            <li><label><input type="checkbox"> Luxury Line</label></li>
+                            <li><label><input type="checkbox"> Essential Basics</label></li>
+                        </ul>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Rating</h4>
+                        <ul class="filter-list rating-list">
+                            <li><a href="#"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> & Up</a></li>
+                            <li><a href="#"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i> & Up</a></li>
+                            <li><a href="#"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i> & Up</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="shop-content">
+                    <div class="shop-toolbar">
+                        <div class="toolbar-left">
+                            <span>Discover authentic West African food products from Cameroon, Nigeria, Ghana, and across the region. From traditional spices to cooking essentials.</span>
+                        </div>
+                        <div class="toolbar-right">
+                            <select class="sort-select">
+                                <option>Default Sorting</option>
+                                <option>Sort by Popularity</option>
+                                <option>Sort by Rating</option>
+                                <option>Sort by Latest</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="products-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <span class="product-badge sale">-15%</span>
+                                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=80" alt="Smart Device Pro">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Electronics</span>
+                                <h3 class="product-title"><a href="product.html">Smart Device Pro Max</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span>(245)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="old-price">$999.00</span>
+                                    <span class="current-price">$849.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <span class="product-badge hot">Hot</span>
+                                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Athletic Sneakers">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Footwear</span>
+                                <h3 class="product-title"><a href="product.html">Athletic Performance Sneakers</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span>(128)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$129.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80" alt="Luxury Fragrance">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Fragrances</span>
+                                <h3 class="product-title"><a href="product.html">Midnight Essence Perfume</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span>(312)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$185.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <span class="product-badge new">New</span>
+                                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Smartwatch Elite">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Electronics</span>
+                                <h3 class="product-title"><a href="product.html">Smartwatch Elite Series</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span>(256)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$699.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80" alt="Leather Handbag">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Accessories</span>
+                                <h3 class="product-title"><a href="product.html">Premium Leather Tote</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                    <span>(89)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$275.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <span class="product-badge sale">-20%</span>
+                                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&q=80" alt="Laptop Pro">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Laptops</span>
+                                <h3 class="product-title"><a href="product.html">Professional Laptop 15"</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span>(178)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="old-price">$2,499.00</span>
+                                    <span class="current-price">$1,999.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 7 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80" alt="Denim Jacket">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Men's Fashion</span>
+                                <h3 class="product-title"><a href="product.html">Classic Denim Jacket</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span>(45)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$159.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 8 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <span class="product-badge new">New</span>
+                                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&q=80" alt="Wireless Earbuds">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Audio</span>
+                                <h3 class="product-title"><a href="product.html">Premium Wireless Earbuds</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span>(187)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$249.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 9 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=80" alt="Modern Sofa">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Furniture</span>
+                                <h3 class="product-title"><a href="product.html">Modern Velvet Sofa</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                    <span>(32)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$899.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 10 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <span class="product-badge hot">Hot</span>
+                                <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?w=400&q=80" alt="Skincare Set">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Beauty</span>
+                                <h3 class="product-title"><a href="product.html">Luxury Skincare Collection</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span>(156)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$149.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 11 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400&q=80" alt="Classic Watch">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Accessories</span>
+                                <h3 class="product-title"><a href="product.html">Classic Timepiece Watch</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                    <span>(98)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$450.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product 12 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <span class="product-badge sale">-10%</span>
+                                <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&q=80" alt="Casual Dress">
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn"><i class="far fa-heart"></i></button>
+                                    <button class="action-btn quickview-btn"><i class="far fa-eye"></i></button>
+                                </div>
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                            </div>
+                            <div class="product-info">
+                                <span class="product-category">Women's Fashion</span>
+                                <h3 class="product-title"><a href="product.html">Elegant Summer Dress</a></h3>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                    <span>(67)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="old-price">$120.00</span>
+                                    <span class="current-price">$108.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <a href="#" class="page-link active">1</a>
+                        <a href="#" class="page-link">2</a>
+                        <a href="#" class="page-link">3</a>
+                        <a href="#" class="page-link"><i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Bar -->
+    <div class="back-to-top-bar" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <span>Back to top</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>Get to Know Us</h4>
+                        <a href="about.html">About ZANARA</a>
+                        <a href="careers.html">Careers</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Make Money with Us</h4>
+                        <a href="#">Sell on ZANARA</a>
+                        <a href="#">Become an Affiliate</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>ZANARA Payment</h4>
+                        <a href="gift-cards.html">Gift Cards</a>
+                        <a href="#">Shop with Points</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Let Us Help You</h4>
+                        <a href="account.html">Your Account</a>
+                        <a href="shipping.html">Shipping Info</a>
+                        <a href="returns.html">Returns</a>
+                        <a href="contact.html">Help</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">ZANARA</span>
+                    <span class="logo-sub">COMMERCE</span>
+                </a>
+                <div class="footer-legal">
+                    <a href="terms.html">Conditions of Use</a>
+                    <a href="privacy.html">Privacy Notice</a>
+                    <a href="contact.html">Help</a>
+                </div>
+                <p class="copyright">&copy; 2025 ZANARA Commerce. All Rights Reserved. | Designed by Fedelis Andonganyung</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+
+    <link rel="stylesheet" href="css/quick-view.css">
+    <script src="js/product-manager.js"></script>
+    <script src="js/wishlist-manager.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

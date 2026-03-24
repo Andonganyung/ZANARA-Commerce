@@ -23,6 +23,7 @@ class ProductManager {
 
     async init() {
         await this.loadProducts();
+        this.detectPageCategory();
         this.setupEventListeners();
         this.applyFilters();
     }
@@ -38,6 +39,22 @@ class ProductManager {
         } catch (error) {
             console.error('Error loading products:', error);
             this.products = [];
+        }
+    }
+
+    detectPageCategory() {
+        // Auto-detect category based on current page URL
+        const path = window.location.pathname;
+        const fileName = path.substring(path.lastIndexOf('/') + 1);
+        
+        if (fileName.includes('african-food')) {
+            this.filters.category = 'African Food';
+        } else if (fileName.includes('african-fashion')) {
+            this.filters.category = 'African Fashion';
+        } else if (fileName.includes('african-traditional-designs')) {
+            this.filters.category = 'African Traditional Designs';
+        } else if (fileName.includes('african-beauty')) {
+            this.filters.category = 'African Beauty';
         }
     }
 

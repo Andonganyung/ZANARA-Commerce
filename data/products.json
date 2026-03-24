@@ -339,11 +339,486 @@
       }
     }
   ],
+    {
+      "id": 13,
+      "title": "Authentic Ndolé Spice Mix",
+      "category": "African Food",
+      "subcategory": "Spices & Seasonings",
+      "price": 18.99,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1596040033229-a0b3b83b0b0f?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1596040033229-a0b3b83b0b0f?w=800&q=80",
+        "https://images.unsplash.com/photo-1577003833154-a2eaa722a13f?w=800&q=80"
+      ],
+      "rating": 4.8,
+      "reviews": 45,
+      "badge": "Best Seller",
+      "description": "Traditional Cameroonian Ndolé spice blend made with authentic West African ingredients. Perfect for preparing the national dish of Cameroon.",
+      "features": ["100% natural ingredients", "Traditional recipe", "No preservatives", "500g pack"],
+      "inStock": true,
+      "brand": "AfroFresh",
+      "variants": {
+        "colors": [],
+        "sizes": ["250g", "500g", "1kg"]
+      }
+    },
+    {
+      "id": 14,
+      "title": "Premium Jollof Rice Mix",
+      "category": "African Food",
+      "subcategory": "Rice & Grains",
+      "price": 15.50,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1516684732162-798a0062be99?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1516684732162-798a0062be99?w=800&q=80",
+        "https://images.unsplash.com/photo-1589647363585-f4a7d3877b10?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 89,
+      "badge": "New",
+      "description": "Authentic Nigerian/Ghanaian Jollof rice seasoning mix. Brings the taste of West Africa to your kitchen with tomatoes, peppers, and special spices.",
+      "features": ["Authentic taste", "Easy to prepare", "Feeds 6-8 people", "Gluten-free"],
+      "inStock": true,
+      "brand": "AfroFresh",
+      "variants": {
+        "colors": [],
+        "sizes": ["400g", "800g"]
+      }
+    },
+    {
+      "id": 15,
+      "title": "Egusi Seeds (Ground)",
+      "category": "African Food",
+      "subcategory": "Cooking Ingredients",
+      "price": 22.99,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80"
+      ],
+      "rating": 4.7,
+      "reviews": 67,
+      "badge": null,
+      "description": "Premium ground melon seeds (Egusi) from Nigeria. Essential for authentic Egusi soup, a West African delicacy rich in protein and nutrients.",
+      "features": ["100% natural", "Rich in protein", "No additives", "Freshly ground"],
+      "inStock": true,
+      "brand": "AfroFresh",
+      "variants": {
+        "colors": [],
+        "sizes": ["500g", "1kg"]
+      }
+    },
+    {
+      "id": 16,
+      "title": "Plantain Chips (Spicy)",
+      "category": "African Food",
+      "subcategory": "Snacks",
+      "price": 9.99,
+      "originalPrice": 12.99,
+      "discount": 23,
+      "image": "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=800&q=80"
+      ],
+      "rating": 4.5,
+      "reviews": 124,
+      "badge": "Sale",
+      "description": "Crispy plantain chips seasoned with West African spices. Perfect snack made from fresh plantains grown in Ghana and Nigeria.",
+      "features": ["Handmade", "No artificial flavors", "Vegan friendly", "Large 300g pack"],
+      "inStock": true,
+      "brand": "Afro Snacks Co.",
+      "variants": {
+        "colors": [],
+        "sizes": ["150g", "300g"]
+      }
+    },
+    {
+      "id": 17,
+      "title": "Palm Oil (Red Gold)",
+      "category": "African Food",
+      "subcategory": "Oils & Fats",
+      "price": 28.50,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 156,
+      "badge": "Best Seller",
+      "description": "Pure unrefined red palm oil from sustainable farms in Cameroon. Essential for authentic West African cooking.",
+      "features": ["Cold-pressed", "Unrefined", "Rich in vitamins", "Sustainable sourced"],
+      "inStock": true,
+      "brand": "AfroFresh",
+      "variants": {
+        "colors": [],
+        "sizes": ["1L", "2L", "5L"]
+      }
+    },
+    {
+      "id": 18,
+      "title": "Pounded Yam Flour (Elubo)",
+      "category": "African Food",
+      "subcategory": "Flour & Powder",
+      "price": 19.99,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1509358271058-acd22cc93898?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1509358271058-acd22cc93898?w=800&q=80"
+      ],
+      "rating": 4.6,
+      "reviews": 78,
+      "badge": "New",
+      "description": "Instant yam flour from Nigeria. Makes authentic pounded yam (Iyan) in minutes. Staple food across West Africa.",
+      "features": ["Instant preparation", "100% yam", "No chemicals", "Makes 10+ servings"],
+      "inStock": true,
+      "brand": "AfroFresh",
+      "variants": {
+        "colors": [],
+        "sizes": ["1kg", "2kg", "5kg"]
+      }
+    },
+    {
+      "id": 19,
+      "title": "Ankara Fabric - Bold Geometric",
+      "category": "African Fashion",
+      "subcategory": "Fabrics",
+      "price": 45.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1618241547683-1e9831ced086?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1618241547683-1e9831ced086?w=800&q=80",
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 92,
+      "badge": "Best Seller",
+      "description": "Authentic African wax print (Ankara) fabric with vibrant geometric patterns. 100% cotton. Perfect for dresses, shirts, and traditional wear.",
+      "features": ["100% cotton", "Colorfast", "6 yards", "Machine washable"],
+      "inStock": true,
+      "brand": "Afrique Textiles",
+      "variants": {
+        "colors": [
+          {"name": "Blue/Orange", "hex": "#ff6b35"},
+          {"name": "Green/Yellow", "hex": "#4ecdc4"},
+          {"name": "Red/Black", "hex": "#c20114"}
+        ],
+        "sizes": ["6 yards"]
+      }
+    },
+    {
+      "id": 20,
+      "title": "Kente Cloth Strip - Authentic Ghana",
+      "category": "African Fashion",
+      "subcategory": "Traditional Fabrics",
+      "price": 189.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1566198990062-a823df6e2d47?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1566198990062-a823df6e2d47?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 34,
+      "badge": "Premium",
+      "description": "Handwoven Kente cloth from Ghana. Traditional Ashanti design with cultural significance. Each pattern tells a story.",
+      "features": ["Handwoven", "Authentic Ghana", "Cultural heritage", "4 yards strip"],
+      "inStock": true,
+      "brand": "Heritage Kente",
+      "variants": {
+        "colors": [
+          {"name": "Royal Gold", "hex": "#ffd700"},
+          {"name": "Traditional Mix", "hex": "#8b4513"}
+        ],
+        "sizes": ["4 yards"]
+      }
+    },
+    {
+      "id": 21,
+      "title": "Dashiki Shirt - Men's Traditional",
+      "category": "African Fashion",
+      "subcategory": "Men's Clothing",
+      "price": 65.00,
+      "originalPrice": 85.00,
+      "discount": 24,
+      "image": "https://images.unsplash.com/photo-1602810319428-019690571b5b?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1602810319428-019690571b5b?w=800&q=80",
+        "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&q=80"
+      ],
+      "rating": 4.8,
+      "reviews": 67,
+      "badge": "Sale",
+      "description": "Traditional West African Dashiki shirt with embroidered neckline. Perfect for cultural events, festivals, or everyday wear.",
+      "features": ["Embroidered collar", "Breathable cotton", "Traditional design", "Unisex style"],
+      "inStock": true,
+      "brand": "Afrique Apparel",
+      "variants": {
+        "colors": [
+          {"name": "Navy Blue", "hex": "#1a2744"},
+          {"name": "Forest Green", "hex": "#228b22"},
+          {"name": "Burgundy", "hex": "#800020"}
+        ],
+        "sizes": ["S", "M", "L", "XL", "XXL"]
+      }
+    },
+    {
+      "id": 22,
+      "title": "Ankara Print Dress - Women's",
+      "category": "African Fashion",
+      "subcategory": "Women's Clothing",
+      "price": 89.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=800&q=80",
+        "https://images.unsplash.com/photo-1562137369-1a1a0bc66744?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 145,
+      "badge": "New",
+      "description": "Elegant African print dress with modern cut. Features vibrant Ankara fabric with fitted bodice and flared skirt. Made in Nigeria.",
+      "features": ["Ankara fabric", "Modern fit", "Back zipper", "Lined interior"],
+      "inStock": true,
+      "brand": "Afrique Couture",
+      "variants": {
+        "colors": [
+          {"name": "Sunset Orange", "hex": "#ff6347"},
+          {"name": "Ocean Blue", "hex": "#4682b4"},
+          {"name": "Emerald Mix", "hex": "#50c878"}
+        ],
+        "sizes": ["XS", "S", "M", "L", "XL"]
+      }
+    },
+    {
+      "id": 23,
+      "title": "Gele Headwrap - Pre-tied",
+      "category": "African Fashion",
+      "subcategory": "Accessories",
+      "price": 38.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=800&q=80"
+      ],
+      "rating": 4.5,
+      "reviews": 56,
+      "badge": null,
+      "description": "Pre-tied Nigerian Gele headwrap in premium aso-oke fabric. Easy to wear, perfect for weddings and special occasions.",
+      "features": ["Pre-tied design", "Adjustable fit", "Aso-oke fabric", "One size fits all"],
+      "inStock": true,
+      "brand": "Heritage Accessories",
+      "variants": {
+        "colors": [
+          {"name": "Gold", "hex": "#ffd700"},
+          {"name": "Royal Blue", "hex": "#4169e1"},
+          {"name": "Purple", "hex": "#9370db"}
+        ],
+        "sizes": ["One Size"]
+      }
+    },
+    {
+      "id": 24,
+      "title": "African Wooden Mask - Cameroon",
+      "category": "African Traditional Designs",
+      "subcategory": "Art & Sculpture",
+      "price": 125.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1582561425706-eba71c19c7a2?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1582561425706-eba71c19c7a2?w=800&q=80",
+        "https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 23,
+      "badge": "Handmade",
+      "description": "Hand-carved traditional mask from Cameroon. Features intricate tribal patterns. Each piece is unique and tells a cultural story.",
+      "features": ["Handcrafted", "Authentic design", "Natural wood", "Wall mountable"],
+      "inStock": true,
+      "brand": "Heritage Arts",
+      "variants": {
+        "colors": [],
+        "sizes": ["Medium (12\")", "Large (18\")"]
+      }
+    },
+    {
+      "id": 25,
+      "title": "Mud Cloth Wall Hanging - Mali",
+      "category": "African Traditional Designs",
+      "subcategory": "Home Decor",
+      "price": 78.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=800&q=80"
+      ],
+      "rating": 4.9,
+      "reviews": 41,
+      "badge": "Best Seller",
+      "description": "Authentic Bogolan (mud cloth) from Mali. Hand-dyed with traditional symbols. Perfect wall art for modern African-inspired spaces.",
+      "features": ["Hand-dyed", "Traditional symbols", "100% cotton", "3ft x 5ft"],
+      "inStock": true,
+      "brand": "Sahel Crafts",
+      "variants": {
+        "colors": [
+          {"name": "Black/White", "hex": "#000000"},
+          {"name": "Brown/Cream", "hex": "#8b4513"}
+        ],
+        "sizes": ["3x5 ft"]
+      }
+    },
+    {
+      "id": 26,
+      "title": "Beaded African Necklace - Nigeria",
+      "category": "African Traditional Designs",
+      "subcategory": "Jewelry",
+      "price": 45.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80"
+      ],
+      "rating": 4.7,
+      "reviews": 89,
+      "badge": "New",
+      "description": "Handmade beaded necklace with traditional Nigerian patterns. Multi-strand design in vibrant colors. Perfect statement piece.",
+      "features": ["Handmade", "Multi-strand", "Adjustable length", "Glass beads"],
+      "inStock": true,
+      "brand": "Heritage Jewelry",
+      "variants": {
+        "colors": [
+          {"name": "Coral/Gold", "hex": "#ff7f50"},
+          {"name": "Turquoise/Red", "hex": "#40e0d0"},
+          {"name": "Royal Mix", "hex": "#4169e1"}
+        ],
+        "sizes": ["One Size"]
+      }
+    },
+    {
+      "id": 27,
+      "title": "African Djembe Drum - Ghana",
+      "category": "African Traditional Designs",
+      "subcategory": "Musical Instruments",
+      "price": 165.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1519508234439-4f23643125c1?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1519508234439-4f23643125c1?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 34,
+      "badge": "Premium",
+      "description": "Authentic hand-carved Djembe drum from Ghana. Professional quality with goat skin head and rope tuning. Rich, resonant sound.",
+      "features": ["Handcarved", "Goat skin head", "Rope-tuned", "Includes carry bag"],
+      "inStock": true,
+      "brand": "Rhythm Heritage",
+      "variants": {
+        "colors": [],
+        "sizes": ["10\" head", "12\" head", "14\" head"]
+      }
+    },
+    {
+      "id": 28,
+      "title": "Woven African Basket Set - Ghana",
+      "category": "African Traditional Designs",
+      "subcategory": "Home Accessories",
+      "price": 55.00,
+      "originalPrice": 70.00,
+      "discount": 21,
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+      ],
+      "rating": 4.6,
+      "reviews": 72,
+      "badge": "Sale",
+      "description": "Set of 3 handwoven Bolga baskets from Ghana. Colorful elephant grass design. Perfect for storage or wall decor.",
+      "features": ["Handwoven", "Set of 3 sizes", "Elephant grass", "Fair trade"],
+      "inStock": true,
+      "brand": "Bolga Crafts",
+      "variants": {
+        "colors": [
+          {"name": "Multi-color", "hex": "#ff6347"},
+          {"name": "Natural/Blue", "hex": "#4682b4"}
+        ],
+        "sizes": ["3-piece set"]
+      }
+    },
+    {
+      "id": 29,
+      "title": "Adinkra Symbol Wall Art",
+      "category": "African Traditional Designs",
+      "subcategory": "Home Decor",
+      "price": 95.00,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1544967082-d9d25d867d66?w=800&q=80"
+      ],
+      "rating": 4.8,
+      "reviews": 45,
+      "badge": "New",
+      "description": "Framed Adinkra symbol art from Ghana. Features meaningful symbols like Gye Nyame (supremacy of God) and Sankofa (learn from the past).",
+      "features": ["Framed", "Multiple symbols", "Matte finish", "16x20 inch"],
+      "inStock": true,
+      "brand": "Heritage Arts",
+      "variants": {
+        "colors": [
+          {"name": "Black on Gold", "hex": "#ffd700"},
+          {"name": "White on Black", "hex": "#ffffff"}
+        ],
+        "sizes": ["16x20\"", "24x30\""]
+      }
+    },
+    {
+      "id": 30,
+      "title": "Shea Butter - Raw Organic (Ghana)",
+      "category": "African Beauty",
+      "subcategory": "Skincare",
+      "price": 24.99,
+      "originalPrice": null,
+      "discount": 0,
+      "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=800&q=80"
+      ],
+      "rating": 5.0,
+      "reviews": 234,
+      "badge": "Best Seller",
+      "description": "100% pure unrefined shea butter from women's cooperatives in Ghana. Rich in vitamins A and E. Perfect for skin and hair.",
+      "features": ["Unrefined", "Fair trade", "Rich in vitamins", "Multi-purpose"],
+      "inStock": true,
+      "brand": "AfroNature",
+      "variants": {
+        "colors": [],
+        "sizes": ["8oz", "16oz", "32oz"]
+      }
+    }
+  ],
   "categories": [
     {"name": "Fashion", "count": 240, "subcategories": ["Women's Clothing", "Men's Clothing", "Footwear", "Accessories"]},
     {"name": "Electronics", "count": 180, "subcategories": ["Smartphones", "Laptops", "Audio", "Wearables"]},
     {"name": "Home & Living", "count": 320, "subcategories": ["Furniture", "Decor", "Kitchen", "Bedding"]},
     {"name": "Beauty", "count": 150, "subcategories": ["Fragrances", "Skincare", "Makeup", "Haircare"]},
+    {"name": "African Food", "count": 85, "subcategories": ["Spices & Seasonings", "Rice & Grains", "Cooking Ingredients", "Snacks", "Oils & Fats", "Flour & Powder"]},
+    {"name": "African Fashion", "count": 120, "subcategories": ["Fabrics", "Traditional Fabrics", "Men's Clothing", "Women's Clothing", "Accessories"]},
+    {"name": "African Traditional Designs", "count": 95, "subcategories": ["Art & Sculpture", "Home Decor", "Jewelry", "Musical Instruments", "Home Accessories"]},
+    {"name": "African Beauty", "count": 45, "subcategories": ["Skincare", "Haircare", "Natural Products"]},
     {"name": "Accessories", "count": 200, "subcategories": ["Watches", "Jewelry", "Bags", "Sunglasses"]},
     {"name": "Sports & Fitness", "count": 95, "subcategories": ["Equipment", "Apparel", "Accessories"]}
   ],
@@ -351,6 +826,12 @@
     {"name": "Premium Collection", "count": 85},
     {"name": "Designer Series", "count": 120},
     {"name": "Luxury Line", "count": 95},
-    {"name": "Essential Basics", "count": 75}
+    {"name": "Essential Basics", "count": 75},
+    {"name": "AfroFresh", "count": 48},
+    {"name": "Afrique Textiles", "count": 35},
+    {"name": "Heritage Kente", "count": 22},
+    {"name": "Afrique Apparel", "count": 42},
+    {"name": "Heritage Arts", "count": 28},
+    {"name": "AfroNature", "count": 31}
   ]
 }
